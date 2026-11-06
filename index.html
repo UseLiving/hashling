@@ -484,10 +484,15 @@ async function defend(addr,R,log){const F=[];const add=(sev,threat,obj,fix)=>F.p
  if(!dels)add('OK','No active token spending approvals.','token accounts',null);
  log('checking Token-2022 mint extensions…');
  const t22=[...new Set(R.accts.filter(a=>parsed.get(a.account)?.owner===T22).map(a=>a.mint))];
- for(let i=0;i<t22.length;i+=100){try{const r={value:await multiAcc(t22.slice(i,i+100))};r.value.forEach((v,j)=>{const info=v?.data?.parsed?.info;if(!info)return;const ex=(info.extensions||[]).map(e=>e.extension);const a=R.accts.find(x=>x.mint===t22[i+j]);const nm=a?.symbol||short(t22[i+j]);
-  if(ex.includes('permanentDelegate'))add('HIGH','Token has a permanent delegate: its issuer can move or burn your balance at any time.',nm,null);
-  if(ex.includes('transferHook'))add('MEDIUM','Token runs a transfer hook program on every transfer.',nm,null);
-  if(info.freezeAuthority&&!a?.verified)add('LOW','Unverified Token-2022 coin with a live freeze authority.',nm,null)})}catch(e){}}
+ const pdG={},hkG={},frz=[];const t22h=t22.filter(m=>R.accts.some(a=>a.mint===m&&a.ui>0));
+ const mv=await multiAcc(t22h,log);mv.forEach((v,j)=>{const info=v?.data?.parsed?.info;if(!info)return;const E=info.extensions||[];const a=R.accts.find(x=>x.mint===t22h[j]);const nm=a?.symbol||short(t22h[j]);if(a?.verified)return;
+  const pd=E.find(e=>e.extension==='permanentDelegate')?.state?.delegate;if(pd)(pdG[pd]=pdG[pd]||[]).push(nm);
+  const hk=E.find(e=>e.extension==='transferHook')?.state?.programId;if(hk)(hkG[hk]=hkG[hk]||[]).push(nm);
+  if(info.freezeAuthority)frz.push(nm)});
+ const lst=L=>esc(L.slice(0,4).join(', '))+(L.length>4?` +${L.length-4} more`:'');
+ Object.entries(pdG).forEach(([d,L])=>add('HIGH',`${L.length} token${L.length>1?'s':''} you hold have a permanent delegate (${short(d,5)}) that can move or burn your balance at any time.`,lst(L),null));
+ Object.entries(hkG).forEach(([h,L])=>add('MEDIUM',`${L.length} token${L.length>1?'s':''} run transfer-hook program ${esc(PROG[h]||short(h,5))} on every transfer.`,lst(L),null));
+ if(frz.length)add('LOW',`${frz.length} unverified Token-2022 coin${frz.length>1?'s':''} still have a live freeze authority.`,lst(frz),null);
  log('scanning token names for phishing…');
  const bad=/(https?:|www\.|\.com|\.io|\.net|\.xyz|t\.me|claim|airdrop|reward|visit|voucher|redeem|gift)/i;
  R.accts.forEach(a=>{const s=`${a.name||''} ${a.symbol||''}`;if(bad.test(s)&&!a.verified)add('HIGH','Phishing-style token: name tells you to visit a site or claim a reward. Don\'t interact with it.',esc(s.trim()).slice(0,40),{type:'burn',account:a.account,program:a.programId,mint:a.mint,amount:a.amount,decimals:a.decimals,label:'Burn & close'})});
