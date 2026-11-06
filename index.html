@@ -470,12 +470,13 @@ function classify(R){const p=R.progs,has=k=>p[k]||0;const pumpTx=has('pump.fun')
  return{c,lvl,st,mood,pumpTx,defiN,nftN,dust,pumpHeld,xpFrac:((Math.sqrt(R.nSig)*1.6)%1)}}
 
 /* =================== defender =================== */
+async function multiAcc(keys,log=()=>{}){const out=new Array(keys.length).fill(null);const ch=[];for(let i=0;i<keys.length;i+=10)ch.push(i);let k=0;const worker=async()=>{while(k<ch.length){const i=ch[k++];try{const r=await rpc('getMultipleAccounts',[keys.slice(i,i+10),{encoding:'jsonParsed'}]);r.value.forEach((v,j)=>out[i+j]=v)}catch(e){log('account read failed: '+e.message)}}};await Promise.all([worker(),worker(),worker(),worker()]);return out}
 function lookalike(a,b){return a!==b&&a.slice(0,4)===b.slice(0,4)&&a.slice(-4)===b.slice(-4)}
 async function defend(addr,R,log){const F=[];const add=(sev,threat,obj,fix)=>F.push({sev,threat,obj,fix});
  if(R.exists&&R.owner!==SYS&&!R.executable){add('CRITICAL','Account is not owned by the System Program. Drainers "assign" wallets to their own program so they can move funds.',`owner ${short(R.owner,6)}`,null)}
  else add('OK','Wallet ownership is normal (System Program).','account',null);
  log('checking token approvals and authorities…');
- const accs=R.accts.filter(a=>a.ui>0||a.amount==='0').slice(0,600).map(a=>a.account);const parsed=new Map();for(let i=0;i<accs.length;i+=100){const ch=accs.slice(i,i+100);try{const r=await rpc('getMultipleAccounts',[ch,{encoding:'jsonParsed'}]);r.value.forEach((v,j)=>{if(v)parsed.set(ch[j],v)})}catch(e){log('authority read failed: '+e.message)}}
+ const accs=R.accts.filter(a=>a.ui>0||a.amount==='0').slice(0,300).map(a=>a.account);const parsed=new Map();const got=await multiAcc(accs,log);got.forEach((v,j)=>{if(v)parsed.set(accs[j],v)});
  let dels=0;R.accts.forEach(a=>{const v=parsed.get(a.account);const info=v?.data?.parsed?.info;if(!info)return;a.program=v.owner;
   if(info.delegate){dels++;add('HIGH',`Active spending approval: ${short(info.delegate,5)} can move up to ${num(info.delegatedAmount?.uiAmount,4)} ${esc(a.symbol||'tokens')}.`,a.symbol||short(a.mint),{type:'revoke',account:a.account,program:v.owner,label:'Revoke'})}
   if(info.closeAuthority&&info.closeAuthority!==addr)add('HIGH','A different address can close this token account.',`${a.symbol||short(a.mint)} · ${short(info.closeAuthority,5)}`,null);
@@ -483,7 +484,7 @@ async function defend(addr,R,log){const F=[];const add=(sev,threat,obj,fix)=>F.p
  if(!dels)add('OK','No active token spending approvals.','token accounts',null);
  log('checking Token-2022 mint extensions…');
  const t22=[...new Set(R.accts.filter(a=>parsed.get(a.account)?.owner===T22).map(a=>a.mint))];
- for(let i=0;i<t22.length;i+=100){try{const r=await rpc('getMultipleAccounts',[t22.slice(i,i+100),{encoding:'jsonParsed'}]);r.value.forEach((v,j)=>{const info=v?.data?.parsed?.info;if(!info)return;const ex=(info.extensions||[]).map(e=>e.extension);const a=R.accts.find(x=>x.mint===t22[i+j]);const nm=a?.symbol||short(t22[i+j]);
+ for(let i=0;i<t22.length;i+=100){try{const r={value:await multiAcc(t22.slice(i,i+100))};r.value.forEach((v,j)=>{const info=v?.data?.parsed?.info;if(!info)return;const ex=(info.extensions||[]).map(e=>e.extension);const a=R.accts.find(x=>x.mint===t22[i+j]);const nm=a?.symbol||short(t22[i+j]);
   if(ex.includes('permanentDelegate'))add('HIGH','Token has a permanent delegate: its issuer can move or burn your balance at any time.',nm,null);
   if(ex.includes('transferHook'))add('MEDIUM','Token runs a transfer hook program on every transfer.',nm,null);
   if(info.freezeAuthority&&!a?.verified)add('LOW','Unverified Token-2022 coin with a live freeze authority.',nm,null)})}catch(e){}}
