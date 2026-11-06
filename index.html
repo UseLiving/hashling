@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Hashling: your Solana wallet hatches into a pixel creature. Real on-chain scanner, wallet defender, rent reclaimer and safe send."><meta name="theme-color" content="#1d4f9c"><meta property="og:title" content="HASHLING"><meta property="og:description" content="Your wallet just hatched."><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2014%2013'%20shape-rendering='crispEdges'%3E%3Crect%20x='4'%20y='0'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='5'%20y='0'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='6'%20y='0'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='7'%20y='0'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='8'%20y='0'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='9'%20y='0'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='2'%20y='1'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='3'%20y='1'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='4'%20y='1'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='5'%20y='1'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='1'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='7'%20y='1'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='8'%20y='1'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='1'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='10'%20y='1'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='11'%20y='1'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='1'%20y='2'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='2'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='3'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='4'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='5'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='7'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='8'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='10'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='11'%20y='2'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='12'%20y='2'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='0'%20y='3'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='1'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='2'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='3'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='4'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='5'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='7'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='8'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='10'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='11'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='12'%20y='3'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='13'%20y='3'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='0'%20y='4'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='1'%20y='4'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='2'%20y='4'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='3'%20y='4'%20width='1'%20height='1'%20fill='%23f2f1ec'/%3E%3Crect%20x='4'%20y='4'%20width='1'%20height='1'%20fill='%23f2f1ec'/%3E%3Crect%20x='5'%20y='4'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='4'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='7'%20y='4'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='8'%20y='4'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='4'%20width='1'%20height='1'%20fill='%23f2f1ec'/%3E%3Crect%20x='10'%20y='4'%20width='1'%20height='1'%20fill='%23f2f1ec'/%3E%3Crect%20x='11'%20y='4'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='12'%20y='4'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='13'%20y='4'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='0'%20y='5'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='1'%20y='5'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='2'%20y='5'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='3'%20y='5'%20width='1'%20height='1'%20fill='%23f2f1ec'/%3E%3Crect%20x='4'%20y='5'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='5'%20y='5'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='5'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='7'%20y='5'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='8'%20y='5'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='5'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='10'%20y='5'%20width='1'%20height='1'%20fill='%23f2f1ec'/%3E%3Crect%20x='11'%20y='5'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='12'%20y='5'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='13'%20y='5'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='0'%20y='6'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='1'%20y='6'%20width='1'%20height='1'%20fill='%23ff6b8a'/%3E%3Crect%20x='2'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='3'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='4'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='5'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='7'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='8'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='10'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='11'%20y='6'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='12'%20y='6'%20width='1'%20height='1'%20fill='%23ff6b8a'/%3E%3Crect%20x='13'%20y='6'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='0'%20y='7'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='1'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='2'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='3'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='4'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='5'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='7'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='7'%20y='7'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='8'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='10'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='11'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='12'%20y='7'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='13'%20y='7'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='0'%20y='8'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='1'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='2'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='3'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='4'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='5'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='7'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='8'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='10'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='11'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='12'%20y='8'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='13'%20y='8'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='1'%20y='9'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='2'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='3'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='4'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='5'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='6'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='7'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='8'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='9'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='10'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='11'%20y='9'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='12'%20y='9'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='2'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='3'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='4'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='5'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='6'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='7'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='8'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='9'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='10'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='11'%20y='10'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='2'%20y='11'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='3'%20y='11'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='4'%20y='11'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='9'%20y='11'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='10'%20y='11'%20width='1'%20height='1'%20fill='%23ff8a1f'/%3E%3Crect%20x='11'%20y='11'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='2'%20y='12'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='3'%20y='12'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='4'%20y='12'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='9'%20y='12'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='10'%20y='12'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3Crect%20x='11'%20y='12'%20width='1'%20height='1'%20fill='%230b0b10'/%3E%3C/svg%3E">
+<title>HASHLING</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* layout: a late-80s workbench desktop (blue, white, orange, black) that hatches out of a pocket pet. every app on it reads real Solana data; the ones that write (revoke, reclaim, send) are signed by the visitor's own wallet */
+:root{
+  --desk:#1d4f9c;--desk2:#173f7e;--white:#f2f1ec;--paper:#e6e3d8;--grey:#b9b6ac;--ink:#0b0b10;--mut:#5c5a66;
+  --org:#ff8a1f;--org2:#ffb35c;--blu:#1d4f9c;--sky:#64b6ff;--grn:#2fd27a;--red:#ff4b55;--yel:#ffd23f;
+  --t:'Silkscreen','Courier New',monospace;--m:'VT323',ui-monospace,monospace;--b:'Pixelify Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--desk);color:var(--ink);font-family:var(--b);-webkit-font-smoothing:none}
+button,input,select,textarea{font:inherit;color:inherit;background:none;border:0}
+button{cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+a{color:inherit}
+::selection{background:var(--org);color:var(--ink)}
+canvas{image-rendering:pixelated}
+
+/* ---------- boot: pocket pet ---------- */
+#boot{position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 40%,#22262f,#07080b 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity .6s}
+#boot.off{opacity:0;pointer-events:none}
+.egg{position:relative;width:min(330px,74vw);height:calc(min(330px,74vw) / .82);border-radius:50% 50% 47% 47%/58% 58% 42% 42%;background:radial-gradient(circle at 34% 26%,#ffd7a8,#ff8a1f 45%,#c95a00 100%);box-shadow:inset -14px -18px 0 rgba(0,0,0,.18),inset 10px 10px 0 rgba(255,255,255,.18),0 30px 60px rgba(0,0,0,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:6%}
+.egg.shake{animation:shake .4s steps(4) infinite}
+@keyframes shake{25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
+.lcdw{width:62%;height:calc(min(330px,74vw) * .56);background:#1b1c22;border-radius:12px;padding:8%;box-shadow:inset 0 0 0 4px #000,inset 0 0 0 6px #3a3c46}
+#lcd{width:100%;height:100%;display:block;background:#9fbf74;image-rendering:pixelated}
+.btns3{display:flex;gap:16px;margin-top:9%}
+.btns3 button{width:30px;height:30px;border-radius:50%;background:#1d4f9c;box-shadow:inset -3px -3px 0 rgba(0,0,0,.35),0 3px 0 #0b2a5a}
+.btns3 button:active{transform:translateY(2px);box-shadow:inset -3px -3px 0 rgba(0,0,0,.35)}
+.btns3 button.a{background:var(--yel)}
+.egg .brand{position:absolute;bottom:10%;font-family:var(--t);font-weight:700;font-size:13px;color:#7a3300;letter-spacing:.12em}
+.bootT{font-family:var(--t);font-weight:700;color:var(--white);font-size:clamp(28px,5vw,46px);letter-spacing:.06em;text-shadow:4px 4px 0 var(--org)}
+.bootS{font-family:var(--m);font-size:22px;color:#9aa0b0;text-align:center}
+.bootS b{color:var(--yel);font-weight:400}
+#skip{position:fixed;right:18px;bottom:16px;z-index:201;font-family:var(--t);font-size:12px;color:#9aa0b0}
+#skip:hover{color:var(--white)}
+#sndB{position:fixed;left:18px;bottom:16px;z-index:201;font-family:var(--t);font-size:12px;color:#9aa0b0}
+
+/* ---------- screen bar (top) ---------- */
+#bar{position:fixed;left:0;right:0;top:0;height:30px;z-index:90;background:var(--white);border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:4px;padding:0 6px;font-family:var(--t);font-size:12px}
+#bar .logo{display:flex;align-items:center;gap:6px;font-weight:700;padding:0 8px 0 2px}
+#bar .mi{padding:4px 9px;position:relative}
+#bar .mi:hover,#bar .mi.on{background:var(--ink);color:var(--white)}
+#bar .sp{flex:1}
+#bar .pill{display:flex;align-items:center;gap:6px;border:2px solid var(--ink);padding:1px 8px;background:var(--paper);font-family:var(--m);font-size:17px;white-space:nowrap}
+#bar .pill.btn{background:var(--org);cursor:pointer;font-family:var(--t);font-size:11px;padding:3px 8px}
+#bar .pill.btn:hover{background:var(--org2)}
+.menu{position:absolute;top:100%;left:0;min-width:200px;background:var(--white);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:none;flex-direction:column;z-index:95;color:var(--ink)}
+.mi.on .menu{display:flex}
+.menu button{text-align:left;padding:7px 12px;font-family:var(--t);font-size:11px;white-space:nowrap}
+.menu button:hover{background:var(--blu);color:var(--white)}
+.menu hr{border:0;border-top:2px dashed var(--grey);margin:2px 0}
+
+/* ---------- desktop ---------- */
+#desk{position:fixed;inset:30px 0 40px 0;background:
+  repeating-linear-gradient(0deg,rgba(0,0,0,.06) 0 2px,transparent 2px 4px),
+  radial-gradient(circle at 75% 60%,#2a63bb,var(--desk) 55%,var(--desk2));overflow:hidden}
+#icons{position:absolute;left:10px;top:10px;bottom:10px;display:flex;flex-direction:column;flex-wrap:wrap;gap:4px;align-content:flex-start}
+.ic{width:92px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;color:var(--white);font-family:var(--t);font-size:10px;text-align:center;user-select:none;border:2px solid transparent}
+.ic span{padding:1px 4px;text-shadow:1px 1px 0 #000}
+.ic.sel{border-color:var(--white);border-style:dashed}
+.ic.sel span{background:var(--org);color:var(--ink);text-shadow:none}
+.ic svg{filter:drop-shadow(2px 2px 0 rgba(0,0,0,.55))}
+.ic:hover svg{transform:translateY(-2px)}
+#wm{position:absolute;right:20px;bottom:16px;text-align:right;color:rgba(255,255,255,.28);font-family:var(--t);pointer-events:none}
+#wm b{display:block;font-size:30px;font-weight:700;color:rgba(255,255,255,.32)}
+#wm span{font-size:11px}
+
+/* ---------- windows ---------- */
+.win{position:absolute;background:var(--paper);border:2px solid var(--ink);box-shadow:5px 5px 0 rgba(0,0,0,.55);display:flex;flex-direction:column;min-width:280px;min-height:160px}
+.win.max{left:0!important;top:0!important;width:100%!important;height:100%!important;box-shadow:none}
+.win.min{display:none}
+.win.pop{animation:wpop .22s steps(4)}
+@keyframes wpop{from{transform:scale(.7);opacity:0}}
+.tb{height:24px;flex:none;display:flex;align-items:center;gap:6px;padding:0 4px;background:var(--white);border-bottom:2px solid var(--ink);user-select:none;touch-action:none;cursor:grab}
+.win.act .tb{background:repeating-linear-gradient(180deg,var(--white) 0 2px,var(--blu) 2px 4px)}
+.tb .tt{font-family:var(--t);font-size:11px;font-weight:700;background:var(--white);padding:1px 8px;border:2px solid var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:70%}
+.tb .sp{flex:1}
+.tb button{width:18px;height:18px;border:2px solid var(--ink);background:var(--org);flex:none;display:grid;place-items:center;font-family:var(--t);font-size:10px;line-height:1}
+.tb button:hover{background:var(--yel)}
+.tb button.cl{background:var(--white)}
+.tb button.cl:hover{background:var(--red)}
+.mbar{flex:none;display:flex;gap:2px;padding:2px 6px;border-bottom:2px solid var(--ink);background:var(--white);font-family:var(--t);font-size:10px}
+.mbar button{padding:2px 8px}
+.mbar button:hover{background:var(--ink);color:var(--white)}
+.wb{flex:1;min-height:0;overflow:auto;position:relative;scrollbar-width:thin}
+.sbar{flex:none;height:20px;display:flex;align-items:center;gap:6px;border-top:2px solid var(--ink);background:var(--white);font-family:var(--m);font-size:15px;padding:0 6px}
+.sbar span{border-right:2px solid var(--grey);padding-right:8px}
+.sbar span:last-child{border:0}
+.sbar .sp{flex:1;border:0}
+.rz{position:absolute;right:0;bottom:0;width:16px;height:16px;cursor:nwse-resize;background:linear-gradient(135deg,transparent 50%,var(--ink) 50% 60%,transparent 60% 70%,var(--ink) 70% 80%,transparent 80%)}
+
+/* shared bits */
+.pad{padding:12px}
+.row{display:flex;gap:8px;align-items:center}
+.inp{border:2px solid var(--ink);background:var(--white);padding:5px 8px;font-family:var(--m);font-size:19px;outline:0;min-width:0;flex:1}
+.inp:focus{box-shadow:3px 3px 0 var(--org)}
+.btn{border:2px solid var(--ink);background:var(--white);box-shadow:3px 3px 0 var(--ink);padding:5px 12px;font-family:var(--t);font-size:11px;font-weight:700;white-space:nowrap;transition:transform .05s}
+.btn:hover{background:var(--yel)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.o{background:var(--org)}
+.btn.b{background:var(--blu);color:var(--white)}
+.btn.r{background:var(--red);color:var(--white)}
+.btn.g{background:var(--grn)}
+.btn.sm{padding:3px 8px;font-size:10px;box-shadow:2px 2px 0 var(--ink)}
+.tabs{display:flex;gap:2px;padding:6px 8px 0;border-bottom:2px solid var(--ink)}
+.tab{font-family:var(--t);font-size:10px;padding:5px 10px;border:2px solid var(--ink);border-bottom:0;background:var(--grey);margin-bottom:-2px}
+.tab.on{background:var(--paper);padding-bottom:7px}
+.tab:disabled{opacity:.5}
+.mono{font-family:var(--m);font-size:18px}
+.lbl{font-family:var(--t);font-size:10px;color:var(--mut)}
+.k{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px dashed var(--grey);font-family:var(--m);font-size:18px}
+.k span{color:var(--mut)}
+.box{border:2px solid var(--ink);background:var(--white);padding:10px}
+.box h4{font-family:var(--t);font-size:11px;margin-bottom:6px}
+.empty{padding:20px;text-align:center;color:var(--mut);font-size:15px;line-height:1.5}
+.err{border:2px solid var(--red);background:#ffe3e5;padding:8px 10px;font-size:14px;line-height:1.45;margin:8px 0}
+.ok{color:#118a4a}.bad{color:#d4202c}.wrn{color:#b86a00}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid var(--ink);border-right-color:transparent;animation:sp 0.6s steps(6) infinite;vertical-align:-1px}
+@keyframes sp{to{transform:rotate(360deg)}}
+table{width:100%;border-collapse:collapse;font-family:var(--m);font-size:17px}
+th{text-align:left;font-family:var(--t);font-size:9px;color:var(--mut);padding:6px;border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--paper)}
+td{padding:5px 6px;border-bottom:1px dashed var(--grey);vertical-align:middle}
+td img,.tkav{width:20px;height:20px;vertical-align:middle;border:1px solid var(--ink);background:var(--white);object-fit:cover}
+.tkav{display:inline-grid;place-items:center;font-family:var(--t);font-size:9px}
+a.lk{color:var(--blu);text-decoration:underline}
+
+/* hashling app */
+.wcg{display:grid;grid-template-columns:210px minmax(0,1fr);height:100%}
+.pet{background:var(--ink);color:var(--white);display:flex;flex-direction:column;border-right:2px solid var(--ink)}
+.petv{position:relative;height:190px;background:repeating-linear-gradient(90deg,rgba(100,182,255,.08) 0 1px,transparent 1px 12px),repeating-linear-gradient(0deg,rgba(100,182,255,.08) 0 1px,transparent 1px 12px),#0f1630}
+.petv canvas{width:100%;height:100%;display:block}
+.petv .mood{position:absolute;left:8px;top:6px;font-family:var(--t);font-size:10px;color:var(--grn)}
+.petv .bub{position:absolute;right:8px;top:8px;max-width:130px;background:var(--white);color:var(--ink);font-family:var(--m);font-size:15px;line-height:1.1;padding:4px 7px;border:2px solid var(--ink);display:none}
+.petv .bub.on{display:block;animation:wpop .2s steps(3)}
+.stats{padding:10px;font-family:var(--t);font-size:10px;flex:1}
+.stats .cls{color:var(--org);font-size:13px;font-weight:700}
+.stats .lv{display:flex;justify-content:space-between;align-items:baseline;margin:4px 0}
+.stats .lv b{font-size:16px}
+.xp{height:8px;border:2px solid var(--white);margin-bottom:10px;position:relative}
+.xp i{position:absolute;left:0;top:0;bottom:0;background:var(--yel);transition:width .8s steps(10)}
+.st{display:grid;grid-template-columns:30px 1fr 24px;gap:6px;align-items:center;margin-bottom:5px}
+.st .bar{height:8px;display:flex;gap:1px}
+.st .bar i{flex:1;background:#2b3350}
+.st .bar i.on{background:var(--grn)}
+.st .bar i.on.lo{background:var(--red)}.st .bar i.on.md{background:var(--yel)}
+.st b{text-align:right;font-weight:400}
+.wcr{display:flex;flex-direction:column;min-width:0}
+.ov{padding:12px}
+.hero{background:var(--ink);color:var(--white);padding:16px;text-align:center;border:2px solid var(--ink);margin-bottom:10px;position:relative;overflow:hidden}
+.hero b{display:block;font-family:var(--t);font-weight:700;font-size:26px;letter-spacing:.04em;text-shadow:3px 3px 0 var(--org)}
+.hero span{font-family:var(--m);font-size:20px;color:var(--sky)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.cards div{border:2px solid var(--ink);background:var(--white);padding:7px 9px}
+.cards b{display:block;font-family:var(--m);font-size:22px;font-weight:400}
+.intel p{font-size:15px;line-height:1.55;margin-bottom:10px}
+.intel b{color:var(--blu)}
+.traits{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px}
+.traits span{font-family:var(--t);font-size:10px;border:2px solid var(--ink);padding:3px 7px;background:var(--yel)}
+.traits span.n{background:var(--white)}
+.prog{font-family:var(--m);font-size:18px;line-height:1.35;padding:10px;background:var(--ink);color:var(--grn);min-height:120px;white-space:pre-wrap}
+
+/* defender */
+.sev{font-family:var(--t);font-size:9px;padding:2px 6px;border:2px solid var(--ink);white-space:nowrap}
+.sev.CRITICAL{background:var(--red);color:var(--white)}.sev.HIGH{background:var(--org)}.sev.MEDIUM{background:var(--yel)}.sev.LOW{background:var(--sky)}.sev.INFO{background:var(--white)}.sev.OK{background:var(--grn)}
+.dlog{font-family:var(--m);font-size:17px;background:var(--ink);color:var(--grn);padding:8px 10px;height:110px;overflow:auto;white-space:pre-wrap}
+.checks{columns:2;font-size:13.5px;line-height:1.6;padding-left:18px}
+.score{display:flex;align-items:center;gap:14px;border:2px solid var(--ink);background:var(--white);padding:10px;margin-bottom:8px}
+.score b{font-family:var(--t);font-size:30px;font-weight:700}
+
+/* network */
+.ng{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px}
+.ng div{background:var(--ink);color:var(--grn);padding:6px 8px;border:2px solid var(--ink)}
+.ng span{display:block;font-family:var(--t);font-size:9px;color:#8aa}
+.ng b{font-family:var(--m);font-size:22px;font-weight:400}
+.chartw{margin:0 8px;height:230px;background:var(--ink);border:2px solid var(--ink)}
+.chartw canvas{width:100%;height:100%;display:block}
+.epb{margin:8px;border:2px solid var(--ink);height:16px;background:var(--white);position:relative}
+.epb i{position:absolute;left:0;top:0;bottom:0;background:repeating-linear-gradient(90deg,var(--blu) 0 10px,var(--sky) 10px 12px)}
+
+/* terminal */
+.term{background:var(--ink);color:#d7f7c8;font-family:var(--m);font-size:19px;line-height:1.25;height:100%;display:flex;flex-direction:column;padding:8px 10px}
+.term .out{flex:1;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.term .out .c{color:var(--org2)}.term .out .e{color:#ff8a92}.term .out .d{color:#8aa}.term .out .y{color:var(--yel)}
+.term .ln{display:flex;gap:6px}
+.term input{flex:1;outline:0;color:#fff;caret-color:var(--org)}
+
+/* my computer */
+.drives{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;padding:12px}
+.drv{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px;border:2px solid transparent;font-family:var(--t);font-size:10px;text-align:center}
+.drv:hover{border-color:var(--ink);background:var(--white)}
+
+/* toasts + modal */
+#toasts{position:fixed;right:12px;bottom:50px;z-index:150;display:flex;flex-direction:column;gap:8px;align-items:flex-end;pointer-events:none}
+.toast{background:var(--white);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:8px 12px;font-size:14px;max-width:340px;pointer-events:auto;animation:wpop .2s steps(3);line-height:1.4}
+.toast.bad{background:#ffe3e5}.toast.ok{background:#dbffe9}
+.toast a{color:var(--blu)}
+#modal{position:fixed;inset:0;z-index:160;background:rgba(5,10,30,.6);display:none;align-items:center;justify-content:center;padding:14px}
+#modal.on{display:flex}
+#modal .win{position:relative;width:min(440px,100%);min-height:0}
+.wl{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.wl button,.wl a{display:flex;justify-content:space-between;align-items:center;border:2px solid var(--ink);background:var(--white);padding:9px 12px;font-family:var(--t);font-size:11px;text-decoration:none}
+.wl button:hover,.wl a:hover{background:var(--yel)}
+.wl span{font-family:var(--m);font-size:16px;color:var(--mut)}
+
+/* dock (bottom) */
+#dock{position:fixed;left:0;right:0;bottom:0;height:40px;z-index:90;background:var(--white);border-top:2px solid var(--ink);display:flex;align-items:center;gap:4px;padding:0 6px}
+#start{display:flex;align-items:center;gap:6px;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);padding:3px 10px;font-family:var(--t);font-size:11px;font-weight:700;background:var(--org)}
+#start.on{transform:translate(2px,2px);box-shadow:none}
+#tasks{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.tk{display:flex;align-items:center;gap:6px;border:2px solid var(--ink);padding:3px 9px;font-family:var(--t);font-size:10px;white-space:nowrap;background:var(--paper);max-width:170px;overflow:hidden;text-overflow:ellipsis}
+.tk.on{background:var(--ink);color:var(--white)}
+#tray{display:flex;align-items:center;gap:8px;border:2px solid var(--ink);padding:2px 8px;font-family:var(--m);font-size:17px;background:var(--paper);white-space:nowrap}
+#smenu{position:fixed;left:6px;bottom:44px;z-index:120;width:240px;background:var(--white);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);display:none}
+#smenu.on{display:flex}
+#smenu .side{writing-mode:vertical-rl;transform:rotate(180deg);background:var(--blu);color:var(--white);font-family:var(--t);font-weight:700;font-size:16px;padding:10px 4px;letter-spacing:.1em}
+#smenu ul{list-style:none;flex:1;padding:4px 0}
+#smenu li button{width:100%;text-align:left;display:flex;align-items:center;gap:10px;padding:7px 10px;font-family:var(--t);font-size:10px}
+#smenu li button:hover{background:var(--blu);color:var(--white)}
+#smenu hr{border:0;border-top:2px dashed var(--grey);margin:3px 0}
+
+@media (max-width:760px){
+  #bar .mi.hm{display:none}
+  #bar .pill.hm{display:none}
+  .win{left:4px!important;top:4px!important;width:calc(100% - 8px)!important;height:calc(100% - 8px)!important;min-width:0}
+  .win .rz{display:none}
+  .tb{cursor:default}
+  .wcg{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+  .pet{flex-direction:row;border-right:0;border-bottom:2px solid var(--ink)}
+  .petv{width:44%;height:auto;min-height:150px}
+  .stats{padding:8px}
+  .cards{grid-template-columns:1fr 1fr}
+  .ng{grid-template-columns:1fr 1fr}
+  .checks{columns:1}
+  #icons{flex-direction:row;flex-wrap:wrap;right:10px;bottom:auto}
+  .ic{width:78px}
+  #wm{display:none}
+  #tray .hm{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
+</style>
+
+<div id="boot">
+  <div class="bootT">HASHLING</div>
+  <div class="egg" id="egg"><div class="lcdw"><canvas id="lcd" width="32" height="28"></canvas></div><div class="btns3"><button aria-label="B"></button><button class="a" id="hatch" aria-label="Hatch"></button><button aria-label="C"></button></div><div class="brand">HASHLING</div></div>
+  <div class="bootS" id="bootS">Your wallet is about to hatch.<br>Press <b>the yellow button</b> or <b>ENTER</b> · ESC to skip</div>
+</div>
+<button id="skip">SKIP INTRO »</button>
+<button id="sndB">SOUND: OFF</button>
+
+<div id="bar">
+  <span class="logo" id="barLogo"></span>
+  <span class="mi" data-m="file">Workbench<div class="menu"><button data-a="open:hashling">Open Hashling</button><button data-a="open:defender">Open Defender</button><button data-a="open:rugbin">Open Rug Bin</button><hr><button data-a="tile">Tile windows</button><button data-a="closeall">Close all windows</button><hr><button data-a="reboot">Reboot (hatch again)</button></div></span>
+  <span class="mi hm" data-m="tools">Tools<div class="menu"><button data-a="open:send">Safe Send</button><button data-a="open:net">Network Monitor</button><button data-a="open:token">Token.exe</button><button data-a="open:term">Command Prompt</button></div></span>
+  <span class="mi hm" data-m="help">Help<div class="menu"><button data-a="open:readme">README.TXT</button><button data-a="x">Hashling on X</button></div></span>
+  <span class="sp"></span>
+  <span class="pill hm" id="caPill" title="Contract address">CA: posted on X at launch</span>
+  <span class="pill btn" id="wBtn">CONNECT</span>
+</div>
+
+<div id="desk"><div id="icons"></div><div id="wm"><b>HASHLING</b><span>Workbench 1.3 · Your wallet just hatched.</span></div></div>
+
+<div id="dock"><button id="start"><span id="startIco"></span>START</button><div id="tasks"></div><div id="tray"><span class="hm" id="trSlot">slot —</span><span id="trSol">◎ —</span><span id="trClk">--:--</span></div></div>
+<div id="smenu"><div class="side">HASHLING</div><ul id="smList"></ul></div>
+<div id="toasts"></div>
+<div id="modal"><div class="win act"><div class="tb"><span class="tt" id="mT">Connect</span><span class="sp"></span><button class="cl" id="mX" aria-label="close">×</button></div><div class="wb pad" id="mB"></div></div></div>
+
+<script>
+/* =================== core utils =================== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const short=(a,n=4)=>a?a.slice(0,n)+'…'+a.slice(-n):'';
+const usd=v=>v==null||!isFinite(v)?'—':'$'+(Math.abs(v)>=1e9?(v/1e9).toFixed(2)+'B':Math.abs(v)>=1e6?(v/1e6).toFixed(2)+'M':Math.abs(v)>=1e3?(v/1e3).toFixed(1)+'K':Math.abs(v)>=1?v.toFixed(2):v>0?v.toPrecision(2):'0');
+const num=(v,d=2)=>v==null?'—':Number(v).toLocaleString(undefined,{maximumFractionDigits:d});
+const ago=t=>{if(!t)return'—';const s=Math.max(0,Date.now()/1000-t);return s<60?Math.floor(s)+'s':s<3600?Math.floor(s/60)+'m':s<86400?Math.floor(s/3600)+'h':Math.floor(s/86400)+'d'};
+const isAddr=s=>/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(s||'');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const store={get(k,d){try{const v=localStorage.getItem('hash_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('hash_'+k,JSON.stringify(v))}catch(e){}}};
+function toast(h,k=''){const d=document.createElement('div');d.className='toast '+k;d.innerHTML=h;$('#toasts').appendChild(d);setTimeout(()=>{d.style.transition='opacity .4s';d.style.opacity=0;setTimeout(()=>d.remove(),400)},k==='bad'?7000:4500)}
+const API={rpc:'https://solana-rpc.publicnode.com',hold:'https://lite-api.jup.ag/ultra/v1/holdings/',tok:'https://lite-api.jup.ag/tokens/v2/search?query=',price:'https://lite-api.jup.ag/price/v3?ids=',dex:'https://api.dexscreener.com',w3:'https://cdn.jsdelivr.net/npm/@solana/web3.js@1.95.3/+esm'};
+const SOLM='So11111111111111111111111111111111111111112',TOKEN='TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',T22='TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb',SYS='11111111111111111111111111111111';
+let W3=null;const w3=async()=>W3||(W3=await import(API.w3));
+async function getJSON(u,o){const r=await fetch(u,o);if(!r.ok)throw new Error(r.status===429?'Rate limited, try again in a few seconds.':r.status+' '+r.statusText);return r.json()}
+let rpcQ=Promise.resolve();
+async function rpc(method,params){const run=async()=>{for(let i=0;i<3;i++){try{const j=await getJSON(API.rpc,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method,params})});if(j.error)throw new Error(j.error.message||'RPC error');return j.result}catch(e){if(i===2||!/Rate|429|fetch/i.test(e.message))throw e;await sleep(600*(i+1))}}};return run()}
+const toB64=u8=>{let s='';for(let i=0;i<u8.length;i++)s+=String.fromCharCode(u8[i]);return btoa(s)};
+
+/* =================== sound =================== */
+let AC=null,SND=store.get('snd',false);
+function beep(f=660,d=.05,type='square',v=.04){if(!SND)return;try{AC=AC||new AudioContext();const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.value=f;g.gain.value=v;g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g).connect(AC.destination);o.start();o.stop(AC.currentTime+d+.02)}catch(e){}}
+function chime(){[523,659,784,1046].forEach((f,i)=>setTimeout(()=>beep(f,.18,'triangle',.05),i*110))}
+function paintSnd(){$('#sndB').textContent='SOUND: '+(SND?'ON':'OFF')}
+$('#sndB').onclick=()=>{SND=!SND;store.set('snd',SND);paintSnd();beep(880,.08)};paintSnd();
+
+/* =================== pixel art =================== */
+const PAL={k:'#0b0b10',w:'#f2f1ec',o:'#ff8a1f',b:'#1d4f9c',s:'#64b6ff',g:'#2fd27a',r:'#ff4b55',y:'#ffd23f',p:'#a77bff',d:'#5c5a66',e:'#e6e3d8'};
+function ico(rows,sc=3){const h=rows.length,w=rows[0].length;let r='';rows.forEach((row,y)=>[...row].forEach((c,x)=>{if(c!=='.')r+=`<rect x="${x}" y="${y}" width="1.02" height="1.02" fill="${PAL[c]}"/>`}));return `<svg width="${w*sc}" height="${h*sc}" viewBox="0 0 ${w} ${h}" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`}
+const I={
+ pet:["....kkkkkk....","..kkooooookk..",".kooooooooook.","kooooooooooook","koowwoooowwook","koowkooookwook","kroooooooooork","koooookkoooook","kooooooooooook",".kooooooooook.","..kkkkkkkkkk..","..kok....kok..","..kkk....kkk.."],
+ shield:["....kkkk....","..kkbbbbkk..",".kbbbsbbbbk.",".kbbsssbbbk.",".kbbbsbbbbk.",".kbbbbbbbbk.","..kbbbbbbk..","..kbbbbbbk..","...kbbbbk...","....kbbk....",".....kk....."],
+ bin:["....kkkk....","kkkkkkkkkkkk",".kwwwwwwwwk.",".kwkwwkwwkk.",".kwkwwkwwkk.",".kwkwwkwwkk.",".kwkwwkwwkk.",".kwkwwkwwkk.",".kwwwwwwwwk.","..kkkkkkkk..","............"],
+ send:["kk..........","kokk........","koookk......","kooooookk...","kooooooooook","koooooookk..","kooookk.....","kookk.......","kk..........","............","............"],
+ net:["kkkkkkkkkkkk","kssssssssssk","ksksssssskk.","kssksssskssk","ksssksskssk.","kssssksssssk","kssssssssssk","kkkkkkkkkkkk","....kkkk....","..kkkkkkkk..","............"],
+ term:["kkkkkkkkkkkk","kwwwwwwwwwwk","kkkkkkkkkkkk","kkkkkkkkkkkk","kgkkkkkkkkkk","kkgkkkkkkkkk","kgkkkkkkkkkk","kkkkggggkkkk","kkkkkkkkkkkk","kkkkkkkkkkkk","............"],
+ coin:["...kkkkkk...","..kyyyyyyk..",".kyyykkyyyk.",".kyykyyyyyk.",".kyyykkyyyk.",".kyyyyykyyk.",".kyykkyyyyk.","..kyyyyyyk..","...kkkkkk...","............","............"],
+ comp:["kkkkkkkkkkkk","keeeeeeeeeek","kekkkkkkkkek","keksssssskek","keksssssskek","kekkkkkkkkek","keeeeeeeeeek","kkkkkkkkkkkk","..keeeeeek..",".kkkkkkkkkk.","............"],
+ doc:["kkkkkkkk....","kwwwwwwkk...","kwkkkkwwkk..","kwwwwwwwwk..","kwkkkkkkwk..","kwwwwwwwwk..","kwkkkkkkwk..","kwwwwwwwwk..","kwkkkkwwwk..","kkkkkkkkkk..","............"],
+ x:["kkkkkkkkkkkk","kwkkkkkkkkwk","kkwkkkkkkwkk","kkkwkkkkwkkk","kkkkwkkwkkkk","kkkkkwwkkkkk","kkkkwkkwkkkk","kkkwkkkkwkkk","kkwkkkkkkwkk","kwkkkkkkkkwk","kkkkkkkkkkkk"]
+};
+$('#barLogo').innerHTML=ico(I.pet,1.6)+'HASHLING';$('#startIco').innerHTML=ico(I.pet,1.3);
+
+/* creature renderer: 32x32 grid on a canvas, class drives shape + accessory */
+const CLASSES={
+ shell:{name:'Unhatched Egg',col:'#e6e3d8',acc:'egg',line:'An empty shell. No history yet.'},
+ fresh:{name:'Fresh Spawn',col:'#ffd23f',acc:'shell',line:'Days old and already curious.'},
+ bot:{name:'Clockwork Bot',col:'#64b6ff',acc:'antenna',line:'Trades faster than it thinks.'},
+ whale:{name:'Deep Whale',col:'#1d4f9c',acc:'crown',line:'Big enough to move the water.'},
+ ghost:{name:'Dormant Ghost',col:'#b9b6ac',acc:'ghost',line:'Hasn\'t moved in a long time.'},
+ degen:{name:'Degen Sniper',col:'#ff4b55',acc:'scope',line:'Lives on new launches.'},
+ defi:{name:'DeFi Wizard',col:'#a77bff',acc:'hat',line:'Lends, stakes, loops.'},
+ nft:{name:'Pixel Hoarder',col:'#ff8a1f',acc:'frame',line:'Collects JPEGs on chain.'},
+ rug:{name:'Rug Collector',col:'#7d8a52',acc:'bin',line:'Carries a museum of dead coins.'},
+ diamond:{name:'Diamond Paws',col:'#2fd27a',acc:'gem',line:'Old, patient, hard to shake.'},
+ normie:{name:'Everyday Critter',col:'#ff8a1f',acc:'none',line:'Does a bit of everything.'}
+};
+function shade(hex,f){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;r=clamp(Math.round(r*f),0,255);g=clamp(Math.round(g*f),0,255);b=clamp(Math.round(b*f),0,255);return '#'+((1<<24)|(r<<16)|(g<<8)|b).toString(16).slice(1)}
+function drawPet(c,cls,t,mood){const g=c.getContext('2d');c.width=48;c.height=40;g.clearRect(0,0,48,40);const C=CLASSES[cls]||CLASSES.shell;const bob=Math.round(Math.sin(t/300)*1);const blink=(Math.floor(t/120)%40)===0;
+ const px=(x,y,w,h,col)=>{g.fillStyle=col;g.fillRect(x,y+bob,w,h)};
+ g.fillStyle='rgba(0,0,0,.35)';g.fillRect(14,34,20,2);
+ if(cls==='shell'){const wob=Math.round(Math.sin(t/180)*1);g.fillStyle='#0b0b10';g.fillRect(17+wob,10,14,22);g.fillRect(15+wob,14,18,16);g.fillStyle='#e6e3d8';g.fillRect(18+wob,11,12,20);g.fillRect(16+wob,15,16,14);g.fillStyle='#ff8a1f';g.fillRect(19+wob,18,3,3);g.fillRect(26+wob,23,3,3);g.fillRect(22+wob,13,2,2);return}
+ const body=C.col,dk=shade(body,.7),lt=shade(body,1.25);const ghost=cls==='ghost';
+ // outline + body (blob)
+ const bx=13,by=12,bw=22,bh=20;
+ px(bx+3,by-1,bw-6,1,'#0b0b10');px(bx+1,by,bw-2,1,'#0b0b10');px(bx,by+1,1,bh-3,'#0b0b10');px(bx+bw-1,by+1,1,bh-3,'#0b0b10');
+ if(ghost){for(let i=0;i<bw;i+=4){px(bx+i,by+bh-2,2,2,'#0b0b10')}}else px(bx+1,by+bh-2,bw-2,1,'#0b0b10');
+ px(bx+1,by+1,bw-2,bh-3,body);px(bx+3,by,bw-6,1,body);px(bx+2,by+2,3,2,lt);px(bx+bw-5,by+bh-6,3,3,dk);
+ if(!ghost){px(bx+3,by+bh-1,4,2,'#0b0b10');px(bx+bw-7,by+bh-1,4,2,'#0b0b10')}
+ // face
+ const ey=by+7;if(blink){px(bx+6,ey+1,3,1,'#0b0b10');px(bx+13,ey+1,3,1,'#0b0b10')}else{px(bx+6,ey,3,3,'#f2f1ec');px(bx+13,ey,3,3,'#f2f1ec');px(bx+7,ey+1,2,2,'#0b0b10');px(bx+14,ey+1,2,2,'#0b0b10')}
+ const my=ey+6;if(mood==='happy'){px(bx+8,my,6,1,'#0b0b10');px(bx+7,my-1,1,1,'#0b0b10');px(bx+14,my-1,1,1,'#0b0b10')}else if(mood==='sad'){px(bx+8,my,6,1,'#0b0b10');px(bx+7,my+1,1,1,'#0b0b10');px(bx+14,my+1,1,1,'#0b0b10')}else if(mood==='alarm'){px(bx+9,my-1,4,3,'#0b0b10')}else px(bx+8,my,6,1,'#0b0b10');
+ px(bx+4,ey+4,2,1,shade(body,1.4));px(bx+16,ey+4,2,1,shade(body,1.4));
+ // accessory
+ const a=C.acc;
+ if(a==='crown'){px(bx+6,by-5,10,4,'#ffd23f');px(bx+6,by-7,2,2,'#ffd23f');px(bx+10,by-7,2,2,'#ffd23f');px(bx+14,by-7,2,2,'#ffd23f');px(bx+9,by-4,2,2,'#ff4b55')}
+ if(a==='antenna'){px(bx+10,by-6,1,5,'#0b0b10');px(bx+9,by-8,3,3,(Math.floor(t/250)%2)?'#ff4b55':'#ffd23f');px(bx-2,ey,2,4,'#0b0b10');px(bx+bw,ey,2,4,'#0b0b10')}
+ if(a==='scope'){px(bx+12,ey-1,6,5,'#0b0b10');px(bx+13,ey,4,3,'#ff4b55');px(bx+18,ey+1,4,1,'#0b0b10')}
+ if(a==='hat'){px(bx+2,by-2,18,2,'#0b0b10');px(bx+6,by-6,10,4,'#a77bff');px(bx+8,by-9,6,3,'#a77bff');px(bx+10,by-11,3,2,'#a77bff');px(bx+9,by-5,2,1,'#ffd23f');px(bx+14,by-7,1,1,'#ffd23f')}
+ if(a==='frame'){px(bx+bw+1,by+4,8,8,'#0b0b10');px(bx+bw+2,by+5,6,6,'#64b6ff');px(bx+bw+3,by+8,2,2,'#2fd27a');px(bx+bw+5,by+6,2,2,'#ffd23f')}
+ if(a==='bin'){px(bx+5,by-5,12,4,'#5c5a66');px(bx+4,by-6,14,1,'#0b0b10');px(bx+8,by-4,1,3,'#0b0b10');px(bx+12,by-4,1,3,'#0b0b10')}
+ if(a==='gem'){px(bx+8,by-6,6,2,'#64b6ff');px(bx+7,by-4,8,2,'#2fd27a');px(bx+9,by-2,4,1,'#2fd27a')}
+ if(a==='shell'){px(bx,by+bh-8,bw,6,'#f2f1ec');for(let i=0;i<bw;i+=3)px(bx+i,by+bh-9,2,1,'#f2f1ec');px(bx,by+bh-8,bw,1,'#0b0b10')}
+ if(mood==='alarm'){px(bx+bw+2,by-2,2,5,'#ff4b55');px(bx+bw+2,by+4,2,2,'#ff4b55')}
+}
+/* LCD pet on the boot egg */
+let LT=0,hatched=false,lcdRaf;
+function lcd(){const c=$('#lcd'),g=c.getContext('2d');g.fillStyle='#9fbf74';g.fillRect(0,0,32,28);LT++;
+ g.fillStyle='#2c3a1c';const w=Math.round(Math.sin(LT/8)*(hatching?2:1));
+ if(!hatching){g.fillRect(12+w,8,8,13);g.fillRect(11+w,10,10,9);g.fillStyle='#9fbf74';g.fillRect(13+w,9,6,11);g.fillRect(12+w,11,8,7);g.fillStyle='#2c3a1c';g.fillRect(14+w,12,2,2);g.fillRect(17+w,15,2,2);
+  if(Math.floor(LT/20)%2){g.fillRect(3,24,2,2);g.fillRect(7,24,2,2);g.fillRect(11,24,2,2)}}
+ else{const p=Math.min(1,hatchP);if(p<.6){g.fillRect(12+w,8,8,13);g.fillRect(11+w,10,10,9);g.fillStyle='#9fbf74';g.fillRect(13+w,9,6,11);g.fillRect(12+w,11,8,7);g.fillStyle='#2c3a1c';for(let i=0;i<p*10;i++)g.fillRect(13+w+((i*3)%6),9+((i*5)%10),1,2)}
+  else{g.fillRect(11,10,10,10);g.fillStyle='#9fbf74';g.fillRect(12,11,8,8);g.fillStyle='#2c3a1c';g.fillRect(13,13,2,2);g.fillRect(17,13,2,2);g.fillRect(14,17,4,1);g.fillRect(8,19,4,2);g.fillRect(20,19,4,2);g.fillRect(10,21,12,1)}}
+ lcdRaf=requestAnimationFrame(lcd)}
+let hatching=false,hatchP=0;lcd();
+function hatch(){if(hatching||hatched)return;hatching=true;$('#egg').classList.add('shake');$('#bootS').innerHTML='Hatching… <b>reading the chain</b>';beep(220,.1);
+ const t0=performance.now();(function f(){hatchP=(performance.now()-t0)/1800;if(hatchP<1){if(Math.random()<.2)beep(300+Math.random()*400,.03);requestAnimationFrame(f)}else{$('#egg').classList.remove('shake');chime();setTimeout(boot,500)}})()}
+function boot(){if(hatched)return;hatched=true;cancelAnimationFrame(lcdRaf);$('#boot').classList.add('off');$('#skip').style.display='none';$('#sndB').style.display='none';store.set('booted',1);setTimeout(()=>{$('#boot').style.display='none';startDesk()},600)}
+$('#hatch').onclick=hatch;$('#egg').onclick=e=>{if(!e.target.closest('button'))hatch()};$('#skip').onclick=boot;
+addEventListener('keydown',e=>{if(!hatched){if(e.key==='Enter')hatch();if(e.key==='Escape')boot()}});
+
+/* =================== window manager =================== */
+const APPS={};let Z=10,WINS={};
+function app(id,def){APPS[id]=def}
+function open(id,arg){const A=APPS[id];if(!A)return;let w=WINS[id];beep(520,.04);
+ if(w){w.el.classList.remove('min');focus(id);if(A.onArg&&arg!=null)A.onArg(arg,w);paintTasks();return w}
+ const el=document.createElement('div');el.className='win pop';el.dataset.id=id;const dw=$('#desk').clientWidth,dh=$('#desk').clientHeight;const n=Object.keys(WINS).length;
+ const ww=Math.min(A.w||620,dw-20),hh=Math.min(A.h||440,dh-20);el.style.width=ww+'px';el.style.height=hh+'px';el.style.left=clamp((A.x!=null?A.x:110+n*26),4,dw-ww-4)+'px';el.style.top=clamp((A.y!=null?A.y:12+n*22),4,dh-hh-4)+'px';
+ el.innerHTML=`<div class="tb"><span class="tt">${esc(A.title)}</span><span class="sp"></span><button class="mn" aria-label="minimize">_</button><button class="mx" aria-label="maximize">□</button><button class="cl" aria-label="close">×</button></div>${A.menu?`<div class="mbar">${A.menu}</div>`:''}<div class="wb"></div>${A.status?`<div class="sbar">${A.status}</div>`:''}<div class="rz"></div>`;
+ $('#desk').appendChild(el);w=WINS[id]={el,body:el.querySelector('.wb'),A};
+ const tb=el.querySelector('.tb');
+ el.addEventListener('pointerdown',()=>focus(id));
+ tb.addEventListener('pointerdown',e=>{if(e.target.closest('button')||innerWidth<=760||el.classList.contains('max'))return;e.preventDefault();tb.setPointerCapture(e.pointerId);const sx=e.clientX-el.offsetLeft,sy=e.clientY-el.offsetTop;const mv=ev=>{el.style.left=clamp(ev.clientX-sx,-el.offsetWidth+80,dw-60)+'px';el.style.top=clamp(ev.clientY-sy,0,dh-24)+'px'};const up=()=>{tb.removeEventListener('pointermove',mv);tb.removeEventListener('pointerup',up)};tb.addEventListener('pointermove',mv);tb.addEventListener('pointerup',up)});
+ tb.addEventListener('dblclick',e=>{if(!e.target.closest('button'))el.classList.toggle('max')});
+ const rz=el.querySelector('.rz');rz.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();rz.setPointerCapture(e.pointerId);const sx=e.clientX,sy=e.clientY,ow=el.offsetWidth,oh=el.offsetHeight;const mv=ev=>{el.style.width=Math.max(280,ow+ev.clientX-sx)+'px';el.style.height=Math.max(160,oh+ev.clientY-sy)+'px';A.onResize&&A.onResize(w)};const up=()=>{rz.removeEventListener('pointermove',mv);rz.removeEventListener('pointerup',up)};rz.addEventListener('pointermove',mv);rz.addEventListener('pointerup',up)});
+ el.querySelector('.mn').onclick=()=>{el.classList.add('min');paintTasks();beep(330,.04)};el.querySelector('.mx').onclick=()=>{el.classList.toggle('max');A.onResize&&A.onResize(w)};el.querySelector('.cl').onclick=()=>close(id);
+ A.init(w,arg);focus(id);paintTasks();return w}
+function close(id){const w=WINS[id];if(!w)return;w.A.onClose&&w.A.onClose(w);w.el.remove();delete WINS[id];paintTasks();beep(260,.05)}
+function focus(id){Object.values(WINS).forEach(x=>x.el.classList.remove('act'));const w=WINS[id];if(!w)return;w.el.classList.add('act');w.el.style.zIndex=++Z;paintTasks()}
+function paintTasks(){const top=Object.entries(WINS).sort((a,b)=>b[1].el.style.zIndex-a[1].el.style.zIndex)[0]?.[0];$('#tasks').innerHTML=Object.entries(WINS).map(([id,w])=>`<button class="tk ${id===top&&!w.el.classList.contains('min')?'on':''}" data-id="${id}">${ico(ICONMAP[id]||I.doc,1.2)} ${esc(w.A.title)}</button>`).join('');$$('.tk').forEach(b=>b.onclick=()=>{const w=WINS[b.dataset.id];if(w.el.classList.contains('min')||b.classList.contains('on')===false){w.el.classList.remove('min');focus(b.dataset.id)}else{w.el.classList.add('min');paintTasks()}})}
+function tile(){const L=Object.values(WINS).filter(w=>!w.el.classList.contains('min'));const dw=$('#desk').clientWidth,dh=$('#desk').clientHeight;const cols=Math.ceil(Math.sqrt(L.length)),rows=Math.ceil(L.length/cols);L.forEach((w,i)=>{w.el.classList.remove('max');w.el.style.left=(110+(i%cols)*((dw-120)/cols))+'px';w.el.style.top=(6+Math.floor(i/cols)*(dh/rows))+'px';w.el.style.width=((dw-120)/cols-10)+'px';w.el.style.height=(dh/rows-12)+'px';w.A.onResize&&w.A.onResize(w)})}
+
+/* =================== wallet connect =================== */
+let WAL=null;
+function providers(){const L=[];const ph=window.phantom?.solana||(window.solana?.isPhantom?window.solana:null);if(ph)L.push(['Phantom',ph]);if(window.solflare?.isSolflare)L.push(['Solflare',window.solflare]);if(window.backpack?.solana||window.backpack?.isBackpack)L.push(['Backpack',window.backpack?.solana||window.backpack]);return L}
+function modal(title,html){$('#mT').textContent=title;$('#mB').innerHTML=html;$('#modal').classList.add('on')}
+function closeModal(){$('#modal').classList.remove('on')}
+$('#mX').onclick=closeModal;$('#modal').onclick=e=>{if(e.target.id==='modal')closeModal()};
+function connect(after){const P=providers();modal('Connect wallet',`<p style="font-size:14px;line-height:1.5">Connecting shares your <b>public address</b> so the apps can read it. Nothing is ever signed unless you press a button that says so (revoke, reclaim or send), and your wallet shows every transaction first. Hashling never asks for a seed phrase.</p>
+ <div class="wl">${P.map(([n])=>`<button data-w="${n}">${n}<span>detected</span></button>`).join('')}${[['Phantom','https://phantom.com/download'],['Solflare','https://solflare.com/download'],['Backpack','https://backpack.app/download']].filter(([n])=>!P.find(p=>p[0]===n)).map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${n}<span>install ↗</span></a>`).join('')}</div><p class="lbl">On a phone, open this site inside your wallet app's browser.</p>`);
+ $$('#mB [data-w]').forEach(b=>b.onclick=async()=>{const p=providers().find(x=>x[0]===b.dataset.w)[1];try{const r=await p.connect();WAL={name:b.dataset.w,p,pk:(r?.publicKey||p.publicKey).toString()};store.set('wal',WAL.name);closeModal();paintWal();toast(`Connected <b>${short(WAL.pk)}</b>`,'ok');beep(880,.08);p.on?.('accountChanged',pk=>{if(pk){WAL.pk=pk.toString();paintWal()}else disconnect()});if(after)after(WAL.pk)}catch(e){toast('Connection cancelled.','bad')}})}
+async function restoreWal(){const n=store.get('wal');if(!n)return;const p=providers().find(x=>x[0]===n)?.[1];if(!p)return;try{const r=await p.connect({onlyIfTrusted:true});WAL={name:n,p,pk:(r?.publicKey||p.publicKey).toString()};paintWal()}catch(e){}}
+function disconnect(){try{WAL?.p?.disconnect?.()}catch(e){}WAL=null;store.set('wal',null);paintWal();toast('Disconnected.')}
+function paintWal(){$('#wBtn').textContent=WAL?short(WAL.pk):'CONNECT';Object.values(WINS).forEach(w=>w.A.onWallet&&w.A.onWallet(w))}
+$('#wBtn').onclick=()=>WAL?modal('Wallet',`<div class="k"><span>Wallet</span><b>${WAL.name}</b></div><div class="k"><span>Address</span><b>${short(WAL.pk,6)}</b></div><div class="row" style="margin-top:12px;flex-wrap:wrap"><button class="btn o" id="mScan">Scan my wallet</button><button class="btn" id="mCopy">Copy address</button><button class="btn r" id="mDis">Disconnect</button></div>`)||($('#mScan').onclick=()=>{closeModal();open('hashling',WAL.pk)},$('#mCopy').onclick=()=>{navigator.clipboard?.writeText(WAL.pk);toast('Copied.','ok')},$('#mDis').onclick=()=>{closeModal();disconnect()}):connect();
+async function sendTx(ixs,label){const W=await w3();if(!WAL)throw new Error('Connect a wallet first.');const owner=new W.PublicKey(WAL.pk);const bh=await rpc('getLatestBlockhash',[{commitment:'confirmed'}]);
+ const msg=new W.TransactionMessage({payerKey:owner,recentBlockhash:bh.value.blockhash,instructions:[W.ComputeBudgetProgram.setComputeUnitPrice({microLamports:20000}),...ixs]}).compileToV0Message();const tx=new W.VersionedTransaction(msg);
+ let sig;if(WAL.p.signAndSendTransaction){const r=await WAL.p.signAndSendTransaction(tx);sig=r?.signature||r}else{const s=await WAL.p.signTransaction(tx);sig=await rpc('sendTransaction',[toB64(s.serialize()),{encoding:'base64',maxRetries:5}])}
+ if(typeof sig!=='string'){const B=await import('https://cdn.jsdelivr.net/npm/bs58@6.0.0/+esm');sig=B.default.encode(new Uint8Array(sig))}
+ toast(`${esc(label)} sent. <a href="https://solscan.io/tx/${sig}" target="_blank" rel="noopener">Solscan</a>`);
+ const t0=Date.now();while(Date.now()-t0<70000){const r=await rpc('getSignatureStatuses',[[sig],{searchTransactionHistory:true}]);const s=r.value[0];if(s){if(s.err)throw new Error('Failed on-chain: '+JSON.stringify(s.err));if(s.confirmationStatus==='confirmed'||s.confirmationStatus==='finalized'){toast(`${esc(label)} confirmed.`,'ok');return sig}}await sleep(1500)}throw new Error('Sent but not confirmed yet; check Solscan.')}
+
+/* =================== chain readers =================== */
+const PROG={'JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4':'Jupiter','JUP4Fb2cqiRUcaTHdrPC8h2gNsA2ETXiPDD33WcGuJB':'Jupiter v4','6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P':'pump.fun','pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA':'PumpSwap','675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8':'Raydium AMM','CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK':'Raydium CLMM','CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C':'Raydium CPMM','LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj':'Raydium LaunchLab','whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc':'Orca','LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo':'Meteora DLMM','Eo7WjKq67rjJQSZxS6z3YkapzY3eMj6Xy8X5EQVn5UaB':'Meteora Pools','dbcij3LWUppWqq96dh6gJWwBifmcGfLSB5D4DuSMaqN':'Meteora DBC','cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG':'Meteora DAMM v2','TSWAPaqyCSx2KABk68Shruf4rp7CxcNi8hAsbdwmHbN':'Tensor','TCMPhJdwDryooaGtiocG1u3xcYbRpiJzb283XfCZsDp':'Tensor cNFT','M2mx93ekt1fmXSVkTrUL9xVFHkmME8HTUi5Cyc5aF7K':'Magic Eden','M3mxk5W2tt27WGT7THox7PmgRDp4m6NEhL5xvxrBfS1':'Magic Eden v3','dRiftyHA39MWEi3m9aunc5MzRF1JYuBsbn6VPcn33UH':'Drift','KLend2g3cP87fffoy8q1mQqGKjrxjC8boSyAYavgmjD':'Kamino Lend','MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA':'marginfi','Stake11111111111111111111111111111111111111':'Stake','SPoo1Ku8WFXoNDMHPsrGSTSG1Y47rzgn41SLUNakuHy':'Stake Pool','SV2EYYJyRz2YhfXwXnhNAevDEui5Q6yrfyo13WtupPF':'Sanctum','PhoeNiXZ8ByJGLkxNfZRnkUfjvmuYqLR89jjFHGqdXY':'Phoenix','metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s':'Metaplex','BGUMAp9Gq7iTEuizy4pqaxsTyUCBK68MDfK752saRPUY':'Bubblegum','11111111111111111111111111111111':'System','TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA':'Token','TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb':'Token-2022','ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL':'Assoc. Token','ComputeBudget111111111111111111111111111111':'Compute Budget','MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr':'Memo','Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo':'Memo v1','AddressLookupTab1e1111111111111111111111111':'Lookup Table','Vote111111111111111111111111111111111111111':'Vote'};
+const DEFI=new Set(['Drift','Kamino Lend','marginfi','Stake','Stake Pool','Sanctum','Meteora DLMM','Meteora Pools','Meteora DAMM v2','Orca','Phoenix','Raydium CLMM']);
+const NFTP=new Set(['Tensor','Tensor cNFT','Magic Eden','Magic Eden v3','Metaplex','Bubblegum']);
+const PLUMB=new Set(['System','Token','Token-2022','Assoc. Token','Compute Budget','Memo','Memo v1','Lookup Table','Vote']);
+let SOLUSD=null;async function solPrice(){try{const j=await getJSON(API.price+SOLM);SOLUSD=j[SOLM]?.usdPrice||SOLUSD}catch(e){}$('#trSol').textContent='◎ '+(SOLUSD?'$'+SOLUSD.toFixed(2):'—');return SOLUSD}
+const META=new Map();
+async function tokenMeta(mints){const need=mints.filter(m=>!META.has(m));for(let i=0;i<need.length;i+=80){const ch=need.slice(i,i+80);try{const arr=await getJSON(API.tok+ch.join(','));arr.forEach(t=>META.set(t.id,t))}catch(e){}ch.forEach(m=>{if(!META.has(m))META.set(m,null)})}return mints.map(m=>META.get(m))}
+async function readWallet(addr,log=()=>{}){const R={addr};
+ log('reading account…');const ai=await rpc('getAccountInfo',[addr,{encoding:'jsonParsed'}]);R.exists=!!ai.value;R.owner=ai.value?.owner||SYS;R.lamports=ai.value?.lamports||0;R.executable=!!ai.value?.executable;R.parsedType=ai.value?.data?.parsed?.type||null;R.sol=R.lamports/1e9;
+ log('reading holdings…');let h=null;try{h=await getJSON(API.hold+addr)}catch(e){log('holdings unavailable: '+e.message)}
+ R.accts=[];if(h?.tokens)for(const [mint,arr] of Object.entries(h.tokens))for(const t of arr)R.accts.push({mint,...t,ui:+t.uiAmount||0});
+ const mints=[...new Set(R.accts.map(a=>a.mint))];log(`found ${R.accts.length} token accounts across ${mints.length} mints`);
+ const metas=await tokenMeta(mints);const mm=new Map(mints.map((m,i)=>[m,metas[i]]));
+ R.accts.forEach(a=>{const m=mm.get(a.mint);a.meta=m;a.symbol=m?.symbol||null;a.name=m?.name||null;a.icon=m?.icon||null;a.price=m?.usdPrice||0;a.value=a.ui*(a.price||0);a.verified=!!m?.isVerified;a.pump=a.mint.endsWith('pump')});
+ await solPrice();R.solUsd=R.sol*(SOLUSD||0);R.tokUsd=R.accts.reduce((s,a)=>s+(a.value||0),0);R.total=R.solUsd+R.tokUsd;
+ log('reading history…');const sigs=await rpc('getSignaturesForAddress',[addr,{limit:1000}]);R.sigs=sigs;R.nSig=sigs.length;R.more=sigs.length===1000;
+ R.newest=sigs[0]?.blockTime||null;R.oldest=sigs[sigs.length-1]?.blockTime||null;R.spanDays=R.newest&&R.oldest?Math.max(1/24,(R.newest-R.oldest)/86400):0;R.perDay=R.nSig&&R.spanDays?R.nSig/Math.max(1,R.spanDays):0;
+ R.ageDays=R.oldest?(Date.now()/1000-R.oldest)/86400:0;R.idleDays=R.newest?(Date.now()/1000-R.newest)/86400:null;R.failRate=R.nSig?sigs.filter(s=>s.err).length/R.nSig:0;
+ log(`parsing ${Math.min(14,sigs.length)} recent transactions…`);R.txs=[];
+ for(const s of sigs.slice(0,14)){try{const tx=await rpc('getTransaction',[s.signature,{encoding:'jsonParsed',maxSupportedTransactionVersion:0,commitment:'confirmed'}]);if(tx)R.txs.push(parseTx(tx,addr,s))}catch(e){}}
+ R.progs={};R.txs.forEach(t=>t.programs.forEach(p=>{R.progs[p]=(R.progs[p]||0)+1}));
+ return R}
+function parseTx(tx,addr,s){const keys=tx.transaction.message.accountKeys.map(k=>typeof k==='string'?{pubkey:k}:k);const idx=keys.findIndex(k=>k.pubkey===addr);const signer=idx>=0&&keys[idx].signer;
+ const pre=tx.meta?.preBalances?.[idx]||0,post=tx.meta?.postBalances?.[idx]||0;const fee=signer&&idx===0?tx.meta.fee:0;
+ const ins=[...tx.transaction.message.instructions,...(tx.meta?.innerInstructions||[]).flatMap(x=>x.instructions)];
+ const programs=[...new Set(tx.transaction.message.instructions.map(i=>i.programId))].map(p=>PROG[p]||p);
+ const memos=ins.filter(i=>(i.program==='spl-memo')||PROG[i.programId]?.startsWith('Memo')).map(i=>typeof i.parsed==='string'?i.parsed:'').filter(Boolean);
+ const transfers=ins.filter(i=>i.program==='system'&&i.parsed?.type==='transfer').map(i=>i.parsed.info);
+ const tokDelta=[];const pt=tx.meta?.preTokenBalances||[],qt=tx.meta?.postTokenBalances||[];const own=b=>b.owner===addr;
+ const mints=new Set([...pt.filter(own),...qt.filter(own)].map(b=>b.mint));mints.forEach(m=>{const a=+(pt.find(b=>own(b)&&b.mint===m)?.uiTokenAmount?.uiAmount||0),b=+(qt.find(b=>own(b)&&b.mint===m)?.uiTokenAmount?.uiAmount||0);if(a!==b)tokDelta.push({mint:m,d:b-a})});
+ const named=programs.filter(p=>!PLUMB.has(p));let kind=named.length?named[0]:transfers.length?'Transfer':'Other';if(kind==='Jupiter'||kind.startsWith('Raydium')||kind==='Orca'||kind==='PumpSwap'||kind.startsWith('Meteora'))kind=tokDelta.length?'Swap · '+kind:kind;
+ if(kind==='pump.fun')kind=tokDelta.some(t=>t.d>0)?'pump.fun buy':tokDelta.some(t=>t.d<0)?'pump.fun sell':'pump.fun';
+ return{sig:s.signature,time:s.blockTime,err:!!s.err,signer,solDelta:(post-pre+ (idx===0?0:0))/1e9,fee:fee/1e9,programs,kind,memos,transfers,tokDelta}}
+
+/* =================== classify + stats =================== */
+function classify(R){const p=R.progs,has=k=>p[k]||0;const pumpTx=has('pump.fun')+has('PumpSwap');const defiN=Object.keys(p).filter(k=>DEFI.has(k)).length;const nftN=Object.keys(p).filter(k=>NFTP.has(k)).length+R.accts.filter(a=>a.decimals===0&&a.ui>=1).length/5;
+ const dust=R.accts.filter(a=>(a.ui===0)||(!a.verified&&(a.value||0)<0.01)).length;const pumpHeld=R.accts.filter(a=>a.pump&&a.ui>0).length;
+ let c='normie';
+ if(!R.exists&&R.nSig===0)c='shell';
+ else if(R.nSig===0)c='shell';
+ else if(R.ageDays<7&&!R.more)c='fresh';
+ else if(R.perDay>150)c='bot';
+ else if(R.total>100000)c='whale';
+ else if(R.idleDays>60)c='ghost';
+ else if(pumpTx>=3||(pumpHeld>=8&&R.perDay>3))c='degen';
+ else if(defiN>=2)c='defi';
+ else if(nftN>=3)c='nft';
+ else if(dust>=15)c='rug';
+ else if(R.ageDays>365&&R.perDay<1.5)c='diamond';
+ const lvl=clamp(Math.floor(Math.sqrt(R.nSig*(R.more?3:1))*1.6+R.ageDays/45),1,99);
+ const s=v=>clamp(Math.round(v),1,99);
+ const st={HP:s(Math.log10(R.total+1)*16),SPD:s(Math.log10(R.perDay+1)*38),DEF:99,INT:s(10+defiN*14+Math.min(30,R.accts.filter(a=>a.verified).length*3)+(R.failRate<.05?10:0)),LCK:s(R.accts.length?(R.accts.filter(a=>a.value>1).length/R.accts.length)*90+5:20)};
+ const mood=R.idleDays>30?'sad':R.total<5?'sad':R.perDay>20||R.total>1000?'happy':'idle';
+ return{c,lvl,st,mood,pumpTx,defiN,nftN,dust,pumpHeld,xpFrac:((Math.sqrt(R.nSig)*1.6)%1)}}
+
+/* =================== defender =================== */
+function lookalike(a,b){return a!==b&&a.slice(0,4)===b.slice(0,4)&&a.slice(-4)===b.slice(-4)}
+async function defend(addr,R,log){const F=[];const add=(sev,threat,obj,fix)=>F.push({sev,threat,obj,fix});
+ if(R.exists&&R.owner!==SYS&&!R.executable){add('CRITICAL','Account is not owned by the System Program. Drainers "assign" wallets to their own program so they can move funds.',`owner ${short(R.owner,6)}`,null)}
+ else add('OK','Wallet ownership is normal (System Program).','account',null);
+ log('checking token approvals and authorities…');
+ const accs=R.accts.map(a=>a.account);const parsed=new Map();for(let i=0;i<accs.length;i+=100){const ch=accs.slice(i,i+100);try{const r=await rpc('getMultipleAccounts',[ch,{encoding:'jsonParsed'}]);r.value.forEach((v,j)=>{if(v)parsed.set(ch[j],v)})}catch(e){log('authority read failed: '+e.message)}}
+ let dels=0;R.accts.forEach(a=>{const v=parsed.get(a.account);const info=v?.data?.parsed?.info;if(!info)return;a.program=v.owner;
+  if(info.delegate){dels++;add('HIGH',`Active spending approval: ${short(info.delegate,5)} can move up to ${num(info.delegatedAmount?.uiAmount,4)} ${esc(a.symbol||'tokens')}.`,a.symbol||short(a.mint),{type:'revoke',account:a.account,program:v.owner,label:'Revoke'})}
+  if(info.closeAuthority&&info.closeAuthority!==addr)add('HIGH','A different address can close this token account.',`${a.symbol||short(a.mint)} · ${short(info.closeAuthority,5)}`,null);
+  if(info.state==='frozen')add('MEDIUM','Token account is frozen by the mint authority. You can\'t move these tokens.',a.symbol||short(a.mint),null)});
+ if(!dels)add('OK','No active token spending approvals.','token accounts',null);
+ log('checking Token-2022 mint extensions…');
+ const t22=[...new Set(R.accts.filter(a=>parsed.get(a.account)?.owner===T22).map(a=>a.mint))];
+ for(let i=0;i<t22.length;i+=100){try{const r=await rpc('getMultipleAccounts',[t22.slice(i,i+100),{encoding:'jsonParsed'}]);r.value.forEach((v,j)=>{const info=v?.data?.parsed?.info;if(!info)return;const ex=(info.extensions||[]).map(e=>e.extension);const a=R.accts.find(x=>x.mint===t22[i+j]);const nm=a?.symbol||short(t22[i+j]);
+  if(ex.includes('permanentDelegate'))add('HIGH','Token has a permanent delegate: its issuer can move or burn your balance at any time.',nm,null);
+  if(ex.includes('transferHook'))add('MEDIUM','Token runs a transfer hook program on every transfer.',nm,null);
+  if(info.freezeAuthority&&!a?.verified)add('LOW','Unverified Token-2022 coin with a live freeze authority.',nm,null)})}catch(e){}}
+ log('scanning token names for phishing…');
+ const bad=/(https?:|www\.|\.com|\.io|\.net|\.xyz|t\.me|claim|airdrop|reward|visit|voucher|redeem|gift)/i;
+ R.accts.forEach(a=>{const s=`${a.name||''} ${a.symbol||''}`;if(bad.test(s)&&!a.verified)add('HIGH','Phishing-style token: name tells you to visit a site or claim a reward. Don\'t interact with it.',esc(s.trim()).slice(0,40),{type:'burn',account:a.account,program:a.programId,mint:a.mint,amount:a.amount,decimals:a.decimals,label:'Burn & close'})});
+ log('checking recent memos and dust transfers…');
+ const sentTo=new Set();R.txs.forEach(t=>t.transfers.forEach(x=>{if(x.source===addr)sentTo.add(x.destination)}));
+ R.txs.forEach(t=>{t.memos.forEach(m=>{if(bad.test(m)&&!t.signer)add('HIGH','Phishing memo in an incoming transaction.',esc(m).slice(0,48),null)});
+  t.transfers.forEach(x=>{if(x.destination===addr&&x.lamports<1e6){const look=[...sentTo].find(d=>lookalike(d,x.source));add(look?'HIGH':'LOW',look?`Address poisoning: dust from ${short(x.source,5)}, which looks like ${short(look,5)} you sent to before. Never copy addresses from history.`:`Dust transfer (${(x.lamports/1e9).toFixed(6)} SOL) from ${short(x.source,5)}.`,short(t.sig,6),null)}})});
+ log('listing programs you signed for…');
+ const signed={};R.txs.filter(t=>t.signer).forEach(t=>t.programs.forEach(p=>{signed[p]=(signed[p]||0)+1}));
+ Object.entries(signed).filter(([p])=>!PLUMB.has(p)).forEach(([p,n])=>add(p.length>30?'INFO':'OK',p.length>30?'You signed for a program Hashling doesn\'t recognise. Make sure you meant to.':'You signed for a well-known program.',`${p.length>30?short(p,6):p} · ${n}×`,null));
+ const w={CRITICAL:40,HIGH:15,MEDIUM:6,LOW:2,INFO:1,OK:0};const score=clamp(100-F.reduce((s,f)=>s+w[f.sev],0),0,100);
+ const order=['CRITICAL','HIGH','MEDIUM','LOW','INFO','OK'];F.sort((a,b)=>order.indexOf(a.sev)-order.indexOf(b.sev));return{F,score}}
+async function fixIx(fx){const W=await w3();const owner=new W.PublicKey(WAL.pk);const prog=new W.PublicKey(fx.program||TOKEN);const acct=new W.PublicKey(fx.account);
+ if(fx.type==='revoke')return[new W.TransactionInstruction({programId:prog,keys:[{pubkey:acct,isSigner:false,isWritable:true},{pubkey:owner,isSigner:true,isWritable:false}],data:Uint8Array.of(5)})];
+ if(fx.type==='close')return[closeIx(W,prog,acct,owner)];
+ if(fx.type==='burn'){const ixs=[];if(fx.amount&&fx.amount!=='0'){const d=new Uint8Array(9);d[0]=8;let n=BigInt(fx.amount);for(let i=1;i<9;i++){d[i]=Number(n&255n);n>>=8n}ixs.push(new W.TransactionInstruction({programId:prog,keys:[{pubkey:acct,isSigner:false,isWritable:true},{pubkey:new W.PublicKey(fx.mint),isSigner:false,isWritable:true},{pubkey:owner,isSigner:true,isWritable:false}],data:d}))}ixs.push(closeIx(W,prog,acct,owner));return ixs}}
+function closeIx(W,prog,acct,owner){return new W.TransactionInstruction({programId:prog,keys:[{pubkey:acct,isSigner:false,isWritable:true},{pubkey:owner,isSigner:false,isWritable:true},{pubkey:owner,isSigner:true,isWritable:false}],data:Uint8Array.of(9)})}
+
+/* =================== shared scan cache =================== */
+const SCANS=new Map();
+async function scan(addr,log){if(SCANS.has(addr)&&Date.now()-SCANS.get(addr).t<60000)return SCANS.get(addr).R;const R=await readWallet(addr,log);SCANS.set(addr,{R,t:Date.now()});const h=store.get('recent',[]).filter(x=>x!==addr);h.unshift(addr);store.set('recent',h.slice(0,12));return R}
+
+/* =================== APP: Hashling =================== */
+app('hashling',{title:'Hashling.exe',w:780,h:520,menu:'<button data-a="scanme">Scan my wallet</button><button data-a="clear">New</button><button data-a="defend">Send to Defender</button><button data-a="help">Help</button>',status:'<span id="wcS">Ready</span><span class="sp"></span><span>Mainnet-Beta</span><span>Read-only</span>',
+ init(w,arg){const b=w.body;b.innerHTML=`<div class="wcg"><div class="pet"><div class="petv"><canvas id="petC"></canvas><span class="mood" id="petM">IDLE</span><div class="bub" id="petB"></div></div><div class="stats" id="petS"></div></div>
+  <div class="wcr"><div class="row pad" style="padding-bottom:8px"><input class="inp" id="wcA" placeholder="Paste any Solana wallet address" spellcheck="false"><button class="btn o" id="wcGo">Scan</button><button class="btn" id="wcC">Connect</button></div>
+  <div class="tabs"><button class="tab on" data-t="ov">Overview</button><button class="tab" data-t="inv" disabled>Inventory</button><button class="tab" data-t="act" disabled>Activity</button><button class="tab" data-t="int" disabled>Intelligence</button></div><div class="wb" id="wcV"></div></div></div>`;
+  w.cls='shell';w.mood='idle';const c=b.querySelector('#petC');const loop=t=>{if(!w.el.isConnected)return;drawPet(c,w.cls,t,w.mood);w.raf=requestAnimationFrame(loop)};w.raf=requestAnimationFrame(loop);
+  c.onclick=()=>{const C=CLASSES[w.cls];say(w,w.R?C.line:'Feed me an address!');beep(700,.05)};
+  b.querySelector('#wcGo').onclick=()=>this.run(w,b.querySelector('#wcA').value.trim());b.querySelector('#wcA').onkeydown=e=>{if(e.key==='Enter')b.querySelector('#wcGo').click()};
+  b.querySelector('#wcC').onclick=()=>WAL?this.run(w,WAL.pk):connect(pk=>this.run(w,pk));
+  $$(`[data-id="hashling"] .tab`).forEach(t=>t.onclick=()=>{$$(`[data-id="hashling"] .tab`).forEach(x=>x.classList.toggle('on',x===t));this.view(w,t.dataset.t)});
+  w.el.querySelectorAll('.mbar button').forEach(m=>m.onclick=()=>{const a=m.dataset.a;if(a==='scanme')WAL?this.run(w,WAL.pk):connect(pk=>this.run(w,pk));if(a==='clear'){w.R=null;w.cls='shell';b.querySelector('#wcA').value='';this.paintStats(w);this.view(w,'ov');$$(`[data-id="hashling"] .tab`).forEach((x,i)=>{x.disabled=i>0;x.classList.toggle('on',i===0)})}if(a==='defend'&&w.R)open('defender',w.R.addr);if(a==='help')open('readme')});
+  this.paintStats(w);this.view(w,'ov');if(arg)this.run(w,arg)},
+ onArg(arg,w){this.run(w,arg)},onClose(w){cancelAnimationFrame(w.raf)},
+ paintStats(w){const R=w.R,K=w.K;const S=w.body.querySelector('#petS');if(!R){S.innerHTML=`<div class="cls">UNKNOWN</div><div class="lv"><span>LVL</span><b>--</b><span style="color:#8aa">no target</span></div><div class="xp"><i style="width:0"></i></div>${['HP','SPD','DEF','INT','LCK'].map(k=>`<div class="st"><span>${k}</span><div class="bar">${'<i></i>'.repeat(10)}</div><b>--</b></div>`).join('')}`;return}
+  S.innerHTML=`<div class="cls">${CLASSES[K.c].name.toUpperCase()}</div><div class="lv"><span>LVL</span><b>${K.lvl}</b><span style="color:#8aa">${short(R.addr)}</span></div><div class="xp"><i style="width:${Math.round(K.xpFrac*100)}%"></i></div>${Object.entries(K.st).map(([k,v])=>`<div class="st"><span>${k}</span><div class="bar">${Array.from({length:10},(_,i)=>`<i class="${i<Math.round(v/10)?'on':''} ${v<30?'lo':v<60?'md':''}"></i>`).join('')}</div><b>${v}</b></div>`).join('')}`},
+ async run(w,addr){if(!isAddr(addr))return toast('That doesn\'t look like a Solana address.','bad');const b=w.body;b.querySelector('#wcA').value=addr;w.cls='shell';w.mood='idle';$('#wcS').innerHTML='<span class="spin"></span> scanning…';
+  const V=b.querySelector('#wcV');V.innerHTML=`<div class="prog" id="wcP">&gt; target ${esc(addr)}\n</div>`;const log=m=>{const p=b.querySelector('#wcP');if(p){p.textContent+='> '+m+'\n';p.scrollTop=1e9}};say(w,'Sniffing the chain…');
+  try{const R=await scan(addr,log);w.R=R;w.K=classify(R);w.cls=w.K.c;w.mood=w.K.mood;b.querySelector('#petM').textContent=w.K.mood.toUpperCase();this.paintStats(w);$$(`[data-id="hashling"] .tab`).forEach(x=>x.disabled=false);this.view(w,'ov');$$(`[data-id="hashling"] .tab`).forEach((x,i)=>x.classList.toggle('on',i===0));$('#wcS').textContent=`Scanned ${short(addr)} · ${R.nSig}${R.more?'+':''} txs`;say(w,CLASSES[w.cls].line);chime()}
+  catch(e){log('ERROR: '+e.message);$('#wcS').textContent='Scan failed';V.insertAdjacentHTML('beforeend',`<div class="err" style="margin:10px">Couldn't finish the scan: ${esc(e.message)}. Public endpoints can be busy; try again in a few seconds.</div>`);w.mood='alarm'}},
+ view(w,t){const V=w.body.querySelector('#wcV'),R=w.R;if(!R){V.innerHTML=`<div class="ov"><div class="hero"><b>HASHLING</b><span>Your wallet just hatched.</span></div><p style="font-size:15px;line-height:1.55;margin-bottom:10px">Hashling is a pocket pet that grows out of any Solana wallet. Feed it an address and it reads the real balance, token inventory and transaction history from the chain, then hatches the creature that wallet really is, with stats to match.</p><div class="box"><h4>HOW TO PLAY</h4><ol style="padding-left:20px;font-size:14.5px;line-height:1.7"><li>Paste any wallet address and press <b>Scan</b>.</li><li>Or press <b>Connect</b> to hatch your own (read-only, nothing is signed).</li><li>Open <b>Intelligence</b> to read what your creature concluded, then send it to <b>Defender</b> for a security check.</li></ol><div class="row" style="margin-top:10px;flex-wrap:wrap">${store.get('recent',[]).slice(0,4).map(a=>`<button class="btn sm" data-re="${a}">${short(a)}</button>`).join('')}</div></div></div>`;V.querySelectorAll('[data-re]').forEach(x=>x.onclick=()=>this.run(w,x.dataset.re));return}
+  const K=w.K;
+  if(t==='ov'){V.innerHTML=`<div class="ov"><div class="hero"><b>${CLASSES[K.c].name.toUpperCase()}</b><span>${esc(CLASSES[K.c].line)}</span></div>
+   <div class="cards"><div><span class="lbl">NET WORTH</span><b>${usd(R.total)}</b></div><div><span class="lbl">SOL</span><b>${num(R.sol,4)}</b></div><div><span class="lbl">TOKENS</span><b>${R.accts.filter(a=>a.ui>0).length}</b></div><div><span class="lbl">TXS SEEN</span><b>${num(R.nSig,0)}${R.more?'+':''}</b></div><div><span class="lbl">AGE</span><b>${R.oldest?(R.more?'>':'')+Math.floor(R.ageDays)+'d':'—'}</b></div><div><span class="lbl">LAST MOVE</span><b>${R.newest?ago(R.newest)+' ago':'never'}</b></div></div>
+   <div class="row" style="flex-wrap:wrap"><button class="btn b" data-g="defender">Run Defender</button><button class="btn" data-g="rugbin">Open Rug Bin</button><a class="btn" href="https://solscan.io/account/${R.addr}" target="_blank" rel="noopener" style="text-decoration:none">Solscan ↗</a><button class="btn" id="wcShare">Share on X</button></div></div>`;
+   V.querySelectorAll('[data-g]').forEach(x=>x.onclick=()=>open(x.dataset.g,R.addr));V.querySelector('#wcShare').onclick=()=>window.open('https://x.com/intent/post?text='+encodeURIComponent(`My wallet hatched into a LVL ${K.lvl} ${CLASSES[K.c].name} on Hashling. HP ${K.st.HP} · SPD ${K.st.SPD} · INT ${K.st.INT} · LCK ${K.st.LCK}\n\n${location.origin+location.pathname}`),'_blank','noopener')}
+  if(t==='inv'){const L=[...R.accts].sort((a,b)=>(b.value||0)-(a.value||0));V.innerHTML=`<table><thead><tr><th>Token</th><th>Amount</th><th>Value</th><th></th></tr></thead><tbody><tr><td><span class="tkav">◎</span> <b>SOL</b></td><td>${num(R.sol,4)}</td><td>${usd(R.solUsd)}</td><td></td></tr>${L.map(a=>`<tr><td>${a.icon?`<img src="${esc(a.icon)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=tkav>?</span>'">`:'<span class="tkav">?</span>'} <b>${esc(a.symbol||short(a.mint))}</b> ${a.verified?'<span class="ok">✓</span>':''}${a.isFrozen?' <span class="bad">frozen</span>':''}</td><td>${num(a.ui,4)}</td><td>${a.value?usd(a.value):'<span style="color:var(--mut)">—</span>'}</td><td><a class="lk" href="https://dexscreener.com/solana/${a.mint}" target="_blank" rel="noopener">chart</a></td></tr>`).join('')}</tbody></table>${L.length?'':'<div class="empty">No token accounts.</div>'}`}
+  if(t==='act'){V.innerHTML=R.txs.length?`<table><thead><tr><th>When</th><th>What</th><th>SOL</th><th></th></tr></thead><tbody>${R.txs.map(x=>`<tr><td>${ago(x.time)}</td><td>${esc(x.kind)}${x.err?' <span class="bad">failed</span>':''}${x.tokDelta.length?`<br><span style="color:var(--mut);font-size:15px">${x.tokDelta.slice(0,2).map(d=>`${d.d>0?'+':''}${num(d.d,2)} ${esc(META.get(d.mint)?.symbol||short(d.mint))}`).join(' · ')}</span>`:''}</td><td class="${x.solDelta>0?'ok':x.solDelta<0?'bad':''}">${x.solDelta?(x.solDelta>0?'+':'')+num(x.solDelta,4):'0'}</td><td><a class="lk" href="https://solscan.io/tx/${x.sig}" target="_blank" rel="noopener">tx</a></td></tr>`).join('')}</tbody></table><p class="lbl" style="padding:8px">Latest ${R.txs.length} of ${R.nSig}${R.more?'+':''} transactions, parsed from the chain.</p>`:'<div class="empty">No transactions yet.</div>'}
+  if(t==='int'){const C=CLASSES[K.c];const top=Object.entries(R.progs).filter(([p])=>!PLUMB.has(p)&&p.length<30).sort((a,b)=>b[1]-a[1]).slice(0,4);const best=[...R.accts].sort((a,b)=>(b.value||0)-(a.value||0))[0];
+   const tr=[];if(R.perDay>20)tr.push('hyperactive');if(R.perDay<0.3&&R.nSig)tr.push('patient');if(K.pumpTx)tr.push('launch hunter');if(K.defiN)tr.push('yield-aware');if(K.dust>=10)tr.push('dust magnet');if(R.failRate>.2)tr.push('fat-fingered');if(R.total>10000)tr.push('well fed');if(R.total<1)tr.push('starving');if(R.accts.some(a=>a.verified&&a.value>100))tr.push('blue-chip holder');if(!tr.length)tr.push('balanced');
+   V.innerHTML=`<div class="ov intel"><div class="traits">${tr.map(x=>`<span>${x}</span>`).join('')}<span class="n">LVL ${K.lvl}</span></div>
+   <p>This wallet hatched as a <b>${C.name}</b>. ${R.oldest?`Its earliest transaction in view is <b>${Math.floor(R.ageDays)} days</b> old${R.more?' (and there is more history beyond that)':''}, and it last moved <b>${ago(R.newest)} ago</b>.`:'It has no transaction history yet.'}</p>
+   <p>It holds <b>${num(R.sol,3)} SOL</b> and <b>${R.accts.filter(a=>a.ui>0).length}</b> tokens, worth about <b>${usd(R.total)}</b> in total.${best&&best.value>0?` Its biggest bag is <b>${esc(best.symbol||short(best.mint))}</b> at ${usd(best.value)}.`:''} ${K.dust?`<b>${K.dust}</b> token accounts are empty or worth next to nothing; Rug Bin can clear them and hand back the rent.`:''}</p>
+   <p>It averages <b>${num(R.perDay,1)}</b> transactions a day across what Hashling can see${R.failRate>.05?`, and about ${Math.round(R.failRate*100)}% of them failed`:''}. ${top.length?`Recently it spends most of its time on <b>${top.map(x=>esc(x[0])).join(', ')}</b>.`:''} ${K.pumpTx?`It touched pump.fun or PumpSwap in ${K.pumpTx} of its last ${R.txs.length} transactions.`:''}</p>
+   <p style="color:var(--mut);font-size:13px">Read straight from Solana mainnet (balances, token accounts, signatures and parsed transactions) plus Jupiter for token names and prices. Not financial advice: a creature can't tell you what to buy.</p></div>`}},
+});
+function say(w,txt){const b=w.body.querySelector('#petB');if(!b)return;b.textContent=txt;b.classList.add('on');clearTimeout(w.sayT);w.sayT=setTimeout(()=>b.classList.remove('on'),3500)}
+
+/* =================== APP: Defender =================== */
+app('defender',{title:'Defender.exe',w:720,h:520,x:170,y:40,menu:'<button data-a="me">Scan my wallet</button><button data-a="help">What gets checked</button>',status:'<span id="dfS">Ready</span><span class="sp"></span><span>Read-only scan · fixes ask your wallet</span>',
+ init(w,arg){const b=w.body;b.innerHTML=`<div class="pad"><div class="hero" style="margin-bottom:10px"><b>WALLET DEFENDER</b><span>Real risk scan for any Solana wallet</span></div><div class="row"><input class="inp" id="dfA" placeholder="Wallet address" spellcheck="false"><button class="btn o" id="dfGo">Scan now</button><button class="btn" id="dfC">Connect</button></div><div id="dfR" style="margin-top:10px"></div><div class="dlog" id="dfL">&gt; ready\n</div>
+  <details style="margin-top:10px" id="dfH"><summary class="lbl" style="cursor:pointer">What gets checked</summary><ul class="checks" style="margin-top:6px"><li>Wallet ownership reassignment (drainer "assign")</li><li>Active token approvals (delegates), with one-click revoke</li><li>Foreign close authority and frozen accounts</li><li>Token-2022 permanent delegates, transfer hooks, freeze authority</li><li>Phishing-named tokens, with burn &amp; close</li><li>Phishing memos in incoming transactions</li><li>Address-poisoning dust and lookalike senders</li><li>Programs you signed for recently</li></ul><p class="lbl" style="margin-top:6px">Defender reads public chain data. It can't remove malware from your device or undo a transaction you already signed.</p></details></div>`;
+  b.querySelector('#dfGo').onclick=()=>this.run(w,b.querySelector('#dfA').value.trim());b.querySelector('#dfA').onkeydown=e=>{if(e.key==='Enter')b.querySelector('#dfGo').click()};b.querySelector('#dfC').onclick=()=>WAL?this.run(w,WAL.pk):connect(pk=>this.run(w,pk));
+  w.el.querySelectorAll('.mbar button').forEach(m=>m.onclick=()=>{if(m.dataset.a==='me')WAL?this.run(w,WAL.pk):connect(pk=>this.run(w,pk));else b.querySelector('#dfH').open=true});if(arg)this.run(w,arg)},
+ onArg(a,w){this.run(w,a)},
+ async run(w,addr){if(!isAddr(addr))return toast('That doesn\'t look like a Solana address.','bad');const b=w.body;b.querySelector('#dfA').value=addr;const L=b.querySelector('#dfL');const log=m=>{L.textContent+='> '+m+'\n';L.scrollTop=1e9};L.textContent='> target '+addr+'\n';b.querySelector('#dfR').innerHTML='<div class="empty"><span class="spin"></span> scanning…</div>';$('#dfS').textContent='Scanning…';
+  try{const R=await scan(addr,log);const {F,score}=await defend(addr,R,log);w.F=F;w.addr=addr;log(`done · ${F.filter(f=>f.sev!=='OK'&&f.sev!=='INFO').length} findings`);$('#dfS').textContent='Scan complete';this.paint(w,score);beep(score>80?880:220,.15)}
+  catch(e){log('ERROR '+e.message);b.querySelector('#dfR').innerHTML=`<div class="err">Scan failed: ${esc(e.message)}</div>`;$('#dfS').textContent='Scan failed'}},
+ paint(w,score){const own=WAL&&WAL.pk===w.addr;const b=w.body;b.querySelector('#dfR').innerHTML=`<div class="score"><b class="${score>=80?'ok':score>=50?'wrn':'bad'}">${score}</b><div><div class="lbl">SAFETY SCORE</div><div style="font-size:14px">${score>=80?'Looking clean.':score>=50?'A few things to tidy up.':'Act on the red items now.'}${!own&&w.F.some(f=>f.fix)?' Connect this wallet to fix items in one click.':''}</div></div></div>
+  <table><thead><tr><th>Severity</th><th>Threat</th><th>Object</th><th></th></tr></thead><tbody>${w.F.map((f,i)=>`<tr><td><span class="sev ${f.sev}">${f.sev}</span></td><td style="font-family:var(--b);font-size:14px">${f.threat}</td><td>${f.obj}</td><td>${f.fix&&own?`<button class="btn sm ${f.fix.type==='revoke'?'b':'r'}" data-fx="${i}">${f.fix.label}</button>`:''}</td></tr>`).join('')}</tbody></table>`;
+  b.querySelectorAll('[data-fx]').forEach(x=>x.onclick=async()=>{const f=w.F[+x.dataset.fx];if(f.fix.type==='burn'&&!confirm('Burn these tokens and close the account? This cannot be undone.'))return;x.disabled=true;x.textContent='…';try{await sendTx(await fixIx(f.fix),f.fix.label);SCANS.delete(w.addr);x.textContent='Done';x.className='btn sm g'}catch(e){toast(esc(e.message),'bad');x.disabled=false;x.textContent=f.fix.label}})},
+ onWallet(w){if(w.F)this.paint(w,null)}
+});
+
+/* =================== APP: Rug Bin =================== */
+app('rugbin',{title:'Rug Bin',w:620,h:480,x:230,y:70,status:'<span id="rbS">Ready</span><span class="sp"></span><span>Reclaim rent from dead coins</span>',
+ init(w,arg){w.body.innerHTML=`<div class="pad"><p style="font-size:14.5px;line-height:1.5;margin-bottom:10px">Every token account holds about <b>0.002 SOL</b> of rent. Empty ones from coins you sold or that rugged just sit there. Rug Bin finds them in your connected wallet and closes them, sending the SOL back to you. Worthless leftovers can be burned and closed too.</p><div class="row" style="flex-wrap:wrap"><button class="btn o" id="rbGo">Open my bin</button><span class="lbl" id="rbW"></span></div><div id="rbL" style="margin-top:10px"></div></div>`;
+  w.body.querySelector('#rbGo').onclick=()=>WAL?this.run(w):connect(()=>this.run(w));this.onWallet(w);if(WAL)this.run(w)},
+ onWallet(w){const el=w.body.querySelector('#rbW');if(el)el.textContent=WAL?'wallet '+short(WAL.pk):'connect a wallet to use the bin'},
+ async run(w){const L=w.body.querySelector('#rbL');L.innerHTML='<div class="empty"><span class="spin"></span> reading your token accounts…</div>';try{SCANS.delete(WAL.pk);const R=await scan(WAL.pk,()=>{});
+  const empty=R.accts.filter(a=>a.amount==='0');const dust=R.accts.filter(a=>a.amount!=='0'&&!a.verified&&(a.value||0)<0.05);w.list={empty,dust};
+  const rent=a=>(+a.lamports||2039280)/1e9;const tot=empty.reduce((s,a)=>s+rent(a),0);
+  L.innerHTML=`<div class="box" style="margin-bottom:10px"><h4>EMPTY ACCOUNTS · ${empty.length}</h4>${empty.length?`<p style="font-size:14px;margin-bottom:8px">Close all ${empty.length} and get back about <b>${tot.toFixed(4)} SOL</b>${SOLUSD?` (${usd(tot*SOLUSD)})`:''}.</p><button class="btn g" id="rbAll">Close &amp; reclaim ${tot.toFixed(4)} SOL</button>`:'<p style="font-size:14px">Nothing to reclaim. Your bin is clean.</p>'}</div>
+   <div class="box"><h4>WORTHLESS LEFTOVERS · ${dust.length}</h4>${dust.length?`<table><tbody>${dust.map((a,i)=>`<tr><td>${esc(a.symbol||short(a.mint))}</td><td>${num(a.ui,2)}</td><td>${a.value?usd(a.value):'$0'}</td><td><button class="btn sm r" data-bn="${i}">Burn &amp; close</button></td></tr>`).join('')}</tbody></table>`:'<p style="font-size:14px">No unverified dust found.</p>'}<p class="lbl" style="margin-top:6px">Burning is permanent. Only burn things you're sure are junk.</p></div>`;
+  $('#rbS').textContent=`${empty.length} empty · ${dust.length} dust`;
+  const all=L.querySelector('#rbAll');if(all)all.onclick=async()=>{all.disabled=true;try{const W=await w3();const owner=new W.PublicKey(WAL.pk);for(let i=0;i<empty.length;i+=12){const ch=empty.slice(i,i+12);all.textContent=`Closing ${i+1}-${i+ch.length} of ${empty.length}…`;await sendTx(ch.map(a=>closeIx(W,new W.PublicKey(a.programId||TOKEN),new W.PublicKey(a.account),owner)),`Close ${ch.length} accounts`)}toast('Rent reclaimed.','ok');chime();this.run(w)}catch(e){toast(esc(e.message),'bad');all.disabled=false;all.textContent='Try again'}};
+  L.querySelectorAll('[data-bn]').forEach(x=>x.onclick=async()=>{const a=dust[+x.dataset.bn];if(!confirm(`Burn ${num(a.ui,2)} ${a.symbol||'tokens'} and close the account? This cannot be undone.`))return;x.disabled=true;try{await sendTx(await fixIx({type:'burn',account:a.account,program:a.programId,mint:a.mint,amount:a.amount}),'Burn & close');this.run(w)}catch(e){toast(esc(e.message),'bad');x.disabled=false}})}
+  catch(e){L.innerHTML=`<div class="err">Couldn't read your accounts: ${esc(e.message)}</div>`}}
+});
+
+/* =================== APP: Safe Send =================== */
+app('send',{title:'SafeSend.exe',w:500,h:470,x:260,y:60,status:'<span id="ssS">Ready</span><span class="sp"></span><span>Checks before you send</span>',
+ init(w){w.body.innerHTML=`<div class="pad"><div class="hero" style="margin-bottom:10px"><b>SAFE SEND</b><span>Send SOL with poisoning checks</span></div><div class="lbl">FROM</div><div class="mono" id="ssF" style="margin-bottom:8px">—</div><div class="lbl">TO</div><input class="inp" id="ssT" placeholder="Recipient address" spellcheck="false" style="width:100%;margin:4px 0 8px"><div class="lbl">AMOUNT (SOL)</div><div class="row" style="margin:4px 0 8px"><input class="inp" id="ssA" type="number" min="0" step="0.001" placeholder="0.00"><button class="btn sm" id="ssMax">Max</button></div><div id="ssC" style="font-size:14px;line-height:1.6;min-height:60px"></div><button class="btn o" id="ssGo" style="width:100%;margin-top:8px">Check &amp; send</button></div>`;
+  this.onWallet(w);const T=w.body.querySelector('#ssT'),A=w.body.querySelector('#ssA');T.oninput=A.oninput=()=>{w.ok=false;w.body.querySelector('#ssGo').textContent='Check & send'};
+  w.body.querySelector('#ssMax').onclick=async()=>{if(!WAL)return connect();const b=(await rpc('getBalance',[WAL.pk])).value/1e9;A.value=Math.max(0,b-0.001).toFixed(6)};
+  w.body.querySelector('#ssGo').onclick=()=>WAL?this.go(w):connect(()=>this.onWallet(w))},
+ onWallet(w){const f=w.body.querySelector('#ssF');if(f)f.textContent=WAL?short(WAL.pk,8):'connect a wallet first'},
+ async go(w){const to=w.body.querySelector('#ssT').value.trim(),amt=+w.body.querySelector('#ssA').value;const C=w.body.querySelector('#ssC');const btn=w.body.querySelector('#ssGo');
+  if(!w.ok){C.innerHTML='<span class="spin"></span> checking…';const out=[];let block=false;
+   if(!isAddr(to)){C.innerHTML='<span class="bad">✗ Not a valid Solana address.</span>';return}
+   if(to===WAL.pk){out.push('<span class="wrn">! That is your own address.</span>')}
+   if(!(amt>0)){C.innerHTML='<span class="bad">✗ Enter an amount above 0.</span>';return}
+   try{const bal=(await rpc('getBalance',[WAL.pk])).value/1e9;if(amt+0.00001>bal){out.push(`<span class="bad">✗ You only have ${bal.toFixed(6)} SOL.</span>`);block=true}else out.push(`<span class="ok">✓ Balance covers it (${bal.toFixed(4)} SOL).</span>`);
+    const ai=await rpc('getAccountInfo',[to,{encoding:'jsonParsed'}]);const v=ai.value;if(v?.executable){out.push('<span class="bad">✗ Recipient is a program, not a wallet.</span>');block=true}else if(v&&v.owner!==SYS){out.push(`<span class="wrn">! Recipient is a ${esc(v.data?.parsed?.type||'non-wallet')} account owned by ${esc(PROG[v.owner]||short(v.owner))}. Make sure that's intended.</span>`)}else out.push(`<span class="ok">✓ Recipient is a normal wallet${v?'':' (new, never used)'}.</span>`);
+    const R=SCANS.get(WAL.pk)?.R||await scan(WAL.pk,()=>{});const seen=new Set();R.txs.forEach(t=>t.transfers.forEach(x=>{seen.add(x.source);seen.add(x.destination)}));const look=[...seen].find(s=>lookalike(s,to));
+    if(look){out.push(`<span class="bad">✗ POISONING RISK: this looks like ${short(look,6)} from your history but is a different address. Check every character.</span>`);block=true}else if(seen.has(to))out.push('<span class="ok">✓ You have transacted with this exact address before.</span>');else out.push('<span class="ok">✓ No lookalike addresses in your recent history.</span>')}catch(e){out.push(`<span class="wrn">! Couldn't finish checks: ${esc(e.message)}</span>`)}
+   C.innerHTML=out.join('<br>');if(!block){w.ok=true;btn.textContent=`Send ${amt} SOL to ${short(to)}`}return}
+  btn.disabled=true;try{const W=await w3();await sendTx([W.SystemProgram.transfer({fromPubkey:new W.PublicKey(WAL.pk),toPubkey:new W.PublicKey(to),lamports:Math.round(amt*1e9)})],`Send ${amt} SOL`);C.innerHTML+='<br><span class="ok">✓ Sent and confirmed.</span>';chime()}catch(e){toast(esc(e.message),'bad')}btn.disabled=false;w.ok=false;btn.textContent='Check & send'}
+});
+
+/* =================== APP: Network Monitor =================== */
+app('net',{title:'Network Monitor',w:640,h:440,x:300,y:30,menu:'<button data-a="r">Refresh</button>',status:'<span id="nmS">Loading…</span><span class="sp"></span><span id="nmV">core —</span>',
+ init(w){w.body.innerHTML=`<div class="ng"><div><span>CURRENT TPS</span><b id="nT">—</b></div><div><span>NON-VOTE TPS</span><b id="nN">—</b></div><div><span>SLOT</span><b id="nS">—</b></div><div><span>EPOCH</span><b id="nE">—</b></div></div><div class="chartw"><canvas id="nC"></canvas></div><div class="epb"><i id="nP" style="width:0"></i></div><div class="row" style="padding:0 8px;justify-content:space-between;font-family:var(--m);font-size:16px"><span id="nPt">epoch progress —</span><span id="nB">block height —</span></div>`;
+  w.el.querySelector('.mbar button').onclick=()=>this.tick(w);this.tick(w);w.iv=setInterval(()=>this.tick(w),15000)},
+ onClose(w){clearInterval(w.iv)},onResize(w){this.draw(w)},
+ async tick(w){try{const [pf,ep,ver]=await Promise.all([rpc('getRecentPerformanceSamples',[60]),rpc('getEpochInfo',[]),w.ver?Promise.resolve(w.ver):rpc('getVersion',[])]);w.ver=ver;
+  w.samp=pf.slice().reverse().map(s=>({t:s.numTransactions/s.samplePeriodSecs,n:(s.numNonVoteTransactions||0)/s.samplePeriodSecs}));const last=w.samp[w.samp.length-1];
+  const b=w.body;b.querySelector('#nT').textContent=num(last.t,0);b.querySelector('#nN').textContent=num(last.n,0);b.querySelector('#nS').textContent=num(ep.absoluteSlot,0);b.querySelector('#nE').textContent=ep.epoch;
+  const pr=ep.slotIndex/ep.slotsInEpoch;b.querySelector('#nP').style.width=(pr*100).toFixed(1)+'%';b.querySelector('#nPt').textContent=`epoch ${ep.epoch} · ${(pr*100).toFixed(1)}% · ~${Math.round((ep.slotsInEpoch-ep.slotIndex)*0.4/3600)}h left`;b.querySelector('#nB').textContent='block height '+num(ep.blockHeight,0);
+  $('#nmS').textContent='Updated '+new Date().toLocaleTimeString();$('#nmV').textContent='core '+(ver['solana-core']||'—');$('#trSlot').textContent='slot '+num(ep.absoluteSlot,0);this.draw(w)}catch(e){$('#nmS').textContent='RPC busy: '+e.message}},
+ draw(w){const c=w.body.querySelector('#nC');if(!c||!w.samp)return;const r=c.getBoundingClientRect();const W=Math.round(r.width/2),H=Math.round(r.height/2);c.width=W;c.height=H;const g=c.getContext('2d');g.fillStyle='#0b0b10';g.fillRect(0,0,W,H);
+  const mx=Math.max(...w.samp.map(s=>s.t))*1.1;g.fillStyle='#16303a';for(let i=1;i<5;i++)g.fillRect(0,Math.round(H*i/5),W,1);for(let i=1;i<10;i++)g.fillRect(Math.round(W*i/10),0,1,H);
+  const line=(k,col)=>{g.fillStyle=col;let py=null;w.samp.forEach((s,i)=>{const x=Math.round(i/(w.samp.length-1)*(W-1)),y=Math.round(H-2-(s[k]/mx)*(H-6));if(py!==null){const a=Math.min(py,y),b=Math.max(py,y);g.fillRect(x,a,1,b-a+1)}g.fillRect(x,y,2,1);py=y})};line('t','#2fd27a');line('n','#ffd23f');
+  g.fillStyle='#8aa';g.font='8px monospace';g.fillText(Math.round(mx)+' tps',2,9);g.fillText('60 min',W-30,H-3)}
+});
+
+/* =================== APP: Token.exe =================== */
+app('token',{title:'Token.exe',w:700,h:520,x:200,y:20,status:'<span>Solana</span><span class="sp"></span><span>Charts by DexScreener</span>',
+ init(w){w.body.innerHTML=`<div class="pad"><div class="box" style="margin-bottom:10px;background:var(--ink);color:var(--white)"><h4 style="color:var(--org)">$HASH · HASHLING</h4><p style="font-size:14.5px;line-height:1.55">The contract address will be posted on X the moment Hashling is fully live. Until then, <b style="color:var(--yel)">there is no official CA</b>. Any address you see before that post isn't ours. Only trust @UseHashling, and we will never DM you one.</p><div class="row" style="margin-top:8px"><button class="btn o" data-x>Hashling on X ↗</button></div></div>
+  <div class="lbl">LOOK UP ANY TOKEN</div><div class="row" style="margin:4px 0 10px"><input class="inp" id="tkA" placeholder="Paste a token mint (CA)" spellcheck="false"><button class="btn o" id="tkGo">Open</button></div><div id="tkV"><div class="empty">Paste a mint to see its live chart and stats.</div></div></div>`;
+  w.body.querySelector('[data-x]').onclick=goX;w.body.querySelector('#tkGo').onclick=()=>this.look(w,w.body.querySelector('#tkA').value.trim());w.body.querySelector('#tkA').onkeydown=e=>{if(e.key==='Enter')w.body.querySelector('#tkGo').click()}},
+ onArg(a,w){w.body.querySelector('#tkA').value=a;this.look(w,a)},
+ async look(w,m){if(!isAddr(m))return toast('Paste a valid mint address.','bad');const V=w.body.querySelector('#tkV');V.innerHTML='<div class="empty"><span class="spin"></span></div>';try{const arr=await getJSON(`${API.dex}/tokens/v1/solana/${m}`);const p=arr.sort((a,b)=>(b.liquidity?.usd||0)-(a.liquidity?.usd||0))[0];const meta=(await tokenMeta([m]))[0];
+  if(!p&&!meta){V.innerHTML='<div class="err">No market found for that mint yet.</div>';return}
+  V.innerHTML=`<div class="row" style="margin-bottom:8px">${(p?.info?.imageUrl||meta?.icon)?`<img src="${esc(p?.info?.imageUrl||meta?.icon)}" alt="" style="width:36px;height:36px;border:2px solid var(--ink)" referrerpolicy="no-referrer">`:''}<div><b style="font-family:var(--t);font-size:13px">${esc(p?.baseToken?.name||meta?.name||'Unknown')}</b><div class="mono">$${esc(p?.baseToken?.symbol||meta?.symbol||'?')} ${meta?.isVerified?'<span class="ok">✓ verified</span>':''}</div></div></div>
+  <div class="cards"><div><span class="lbl">PRICE</span><b>${p?'$'+(+p.priceUsd).toPrecision(4):meta?.usdPrice?'$'+meta.usdPrice.toPrecision(4):'—'}</b></div><div><span class="lbl">MCAP</span><b>${usd(p?.marketCap||p?.fdv||meta?.mcap)}</b></div><div><span class="lbl">24H</span><b class="${(p?.priceChange?.h24||0)>=0?'ok':'bad'}">${p?.priceChange?.h24!=null?p.priceChange.h24.toFixed(1)+'%':'—'}</b></div></div>
+  ${p?`<div style="height:300px;border:2px solid var(--ink)"><iframe title="chart" style="width:100%;height:100%;border:0" src="https://dexscreener.com/solana/${p.pairAddress}?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"></iframe></div>`:''}
+  <div class="row" style="margin-top:8px;flex-wrap:wrap"><a class="btn" style="text-decoration:none" href="https://dexscreener.com/solana/${m}" target="_blank" rel="noopener">DexScreener ↗</a><a class="btn" style="text-decoration:none" href="https://solscan.io/token/${m}" target="_blank" rel="noopener">Solscan ↗</a></div>`}catch(e){V.innerHTML=`<div class="err">${esc(e.message)}</div>`}}
+});
+
+/* =================== APP: Command Prompt =================== */
+app('term',{title:'Command Prompt',w:600,h:380,x:340,y:120,
+ init(w){w.body.innerHTML=`<div class="term"><div class="out" id="tO"></div><div class="ln"><span>C:\\HASHLING&gt;</span><input id="tI" spellcheck="false" autocomplete="off" aria-label="command"></div></div>`;const O=w.body.querySelector('#tO'),In=w.body.querySelector('#tI');w.hist=[];w.hi=0;
+  const p=(t,c='')=>{O.insertAdjacentHTML('beforeend',`<div class="${c}">${t}</div>`);O.scrollTop=1e9};w.p=p;p('Hashling Command Prompt · real data from Solana mainnet');p('Type <span class="c">help</span> for commands.','d');
+  w.body.querySelector('.term').onclick=()=>In.focus();
+  In.onkeydown=async e=>{if(e.key==='Enter'){const v=In.value.trim();In.value='';if(!v)return;w.hist.push(v);w.hi=w.hist.length;p('C:\\HASHLING&gt; '+esc(v),'d');beep(900,.02);try{await this.cmd(w,v)}catch(er){p('error: '+esc(er.message),'e')}}if(e.key==='ArrowUp'){w.hi=Math.max(0,w.hi-1);In.value=w.hist[w.hi]||''}if(e.key==='ArrowDown'){w.hi=Math.min(w.hist.length,w.hi+1);In.value=w.hist[w.hi]||''}};setTimeout(()=>In.focus(),50)},
+ async cmd(w,v){const p=w.p;const [c,...a]=v.split(/\s+/);const arg=a[0]||(WAL&&WAL.pk);switch(c.toLowerCase()){
+  case 'help':p(['<span class="c">balance</span> [addr]    SOL balance','<span class="c">tokens</span> [addr]     top token holdings','<span class="c">scan</span> [addr]       hatch it in Hashling','<span class="c">defend</span> [addr]     run Defender','<span class="c">txs</span> [addr]        last 10 signatures','<span class="c">price</span> &lt;mint|sol&gt;  live price','<span class="c">tps</span> / <span class="c">slot</span> / <span class="c">epoch</span>   network stats','<span class="c">open</span> &lt;app&gt;       hashling, defender, rugbin, send, net, token','<span class="c">connect</span> / <span class="c">whoami</span> / <span class="c">clear</span>'].join('\n'));break;
+  case 'clear':w.body.querySelector('#tO').innerHTML='';break;
+  case 'whoami':p(WAL?`${WAL.name} · ${WAL.pk}`:'not connected');break;
+  case 'connect':connect(pk=>p('connected '+pk,'y'));break;
+  case 'balance':{if(!isAddr(arg))throw new Error('usage: balance <address>');const r=await rpc('getBalance',[arg]);await solPrice();p(`${(r.value/1e9).toFixed(6)} SOL${SOLUSD?'  ≈ '+usd(r.value/1e9*SOLUSD):''}`,'y');break}
+  case 'tokens':{if(!isAddr(arg))throw new Error('usage: tokens <address>');p('reading…','d');const R=await scan(arg,()=>{});const L=[...R.accts].filter(x=>x.ui>0).sort((x,y)=>(y.value||0)-(x.value||0)).slice(0,10);p(L.map(x=>`${(x.symbol||short(x.mint)).padEnd(10)} ${num(x.ui,2).padStart(16)}  ${usd(x.value).padStart(9)}`).join('\n')||'no tokens','y');break}
+  case 'txs':{if(!isAddr(arg))throw new Error('usage: txs <address>');const s=await rpc('getSignaturesForAddress',[arg,{limit:10}]);p(s.map(x=>`${ago(x.blockTime).padStart(4)}  ${x.err?'FAIL':' ok '}  ${x.signature.slice(0,32)}…`).join('\n')||'none','y');break}
+  case 'scan':if(!isAddr(arg))throw new Error('usage: scan <address>');open('hashling',arg);p('opening Hashling…','d');break;
+  case 'defend':if(!isAddr(arg))throw new Error('usage: defend <address>');open('defender',arg);p('opening Defender…','d');break;
+  case 'price':{const m=(a[0]||'').toLowerCase()==='sol'||!a[0]?SOLM:a[0];const j=await getJSON(API.price+m);const x=j[m];if(!x)throw new Error('no price for that mint');const meta=(await tokenMeta([m]))[0];p(`${meta?.symbol||short(m)}  $${x.usdPrice.toPrecision(6)}  ${x.priceChange24h!=null?(x.priceChange24h>=0?'+':'')+x.priceChange24h.toFixed(2)+'% 24h':''}`,'y');break}
+  case 'tps':{const s=await rpc('getRecentPerformanceSamples',[1]);p(`${num(s[0].numTransactions/s[0].samplePeriodSecs,0)} tps (${num((s[0].numNonVoteTransactions||0)/s[0].samplePeriodSecs,0)} non-vote)`,'y');break}
+  case 'slot':p(num(await rpc('getSlot',[]),0),'y');break;
+  case 'epoch':{const e=await rpc('getEpochInfo',[]);p(`epoch ${e.epoch} · ${(e.slotIndex/e.slotsInEpoch*100).toFixed(2)}% · block ${num(e.blockHeight,0)}`,'y');break}
+  case 'open':if(!APPS[a[0]])throw new Error('apps: '+Object.keys(APPS).join(', '));open(a[0]);break;
+  case 'sudo':p('nice try. this pet only listens to its owner.','e');break;
+  default:p(`'${esc(c)}' is not recognised. Type help.`,'e')}}
+});
+
+/* =================== APP: My Computer + README =================== */
+app('comp',{title:'My Computer',w:520,h:360,x:140,y:50,status:'<span id="mcS">—</span>',
+ init(w){this.paint(w)},onWallet(w){this.paint(w)},
+ paint(w){const rec=store.get('recent',[]);w.body.innerHTML=`<div class="drives">${[['hashling',I.pet,'Hashling'],['defender',I.shield,'Defender'],['rugbin',I.bin,'Rug Bin'],['send',I.send,'Safe Send'],['net',I.net,'Network'],['token',I.coin,'Token.exe'],['term',I.term,'Prompt'],['readme',I.doc,'README']].map(([id,ic,l])=>`<button class="drv" data-o="${id}">${ico(ic,4)}${l}</button>`).join('')}</div><div class="pad" style="padding-top:0"><div class="box"><h4>RECENT SCANS</h4>${rec.length?rec.map(a=>`<button class="btn sm" style="margin:3px" data-r="${a}">${short(a)}</button>`).join(''):'<span style="font-size:14px;color:var(--mut)">None yet.</span>'}</div></div>`;
+  w.body.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>open(b.dataset.o));w.body.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>open('hashling',b.dataset.r));const s=w.el.querySelector('#mcS');if(s)s.textContent=WAL?'Wallet '+short(WAL.pk):'No wallet connected'}
+});
+app('readme',{title:'README.TXT',w:520,h:440,x:380,y:60,
+ init(w){w.body.innerHTML=`<div class="pad" style="font-family:var(--m);font-size:19px;line-height:1.35;white-space:pre-wrap;background:var(--white);min-height:100%">HASHLING · WORKBENCH 1.3
+=========================
+
+Your wallet just hatched.
+
+Hashling is a desktop of small, honest tools for Solana wallets.
+Everything reads live mainnet data. Nothing here is simulated.
+
+HASHLING.EXE   Hatch any wallet into a creature. Level, HP, SPD,
+                DEF, INT and LCK come from its real balance, tokens
+                and transaction history.
+DEFENDER.EXE    Security scan: drainer reassignments, token
+                approvals (revoke in one click), frozen and
+                hijacked accounts, Token-2022 traps, phishing
+                tokens and memos, address-poisoning dust.
+RUG BIN         Close empty token accounts and get the rent back.
+                Burn worthless leftovers.
+SAFESEND.EXE    Send SOL after checking for lookalike addresses.
+NETWORK         Live TPS, slot, epoch and block height.
+TOKEN.EXE       $HASH info and a chart lookup for any mint.
+PROMPT          Type help.
+
+SAFETY
+------
+- Connecting a wallet only shares your public address.
+- Revoke, reclaim, burn and send each ask your wallet to sign one
+  transaction you can read first. Hashling never asks for a seed
+  phrase and never holds your funds.
+- $HASH contract address: posted on X when we're fully live.
+  Anything before that isn't us.
+
+Data: Solana RPC (publicnode), Jupiter, DexScreener.
+Not financial advice.</div>`}
+});
+
+/* =================== desktop =================== */
+const ICONMAP={hashling:I.pet,defender:I.shield,rugbin:I.bin,send:I.send,net:I.net,token:I.coin,term:I.term,comp:I.comp,readme:I.doc};
+const DESK=[['hashling','Hashling.exe'],['defender','Defender.exe'],['rugbin','Rug Bin'],['send','SafeSend.exe'],['net','Network Monitor'],['token','Token.exe'],['term','Command Prompt'],['comp','My Computer'],['readme','README.TXT'],['x','X']];
+function goX(){window.open('https://x.com/UseHashling','_blank','noopener')}
+function startDesk(){$('#icons').innerHTML=DESK.map(([id,l])=>`<div class="ic" data-id="${id}" tabindex="0">${ico(id==='x'?I.x:ICONMAP[id],3.4)}<span>${l}</span></div>`).join('');
+ $$('.ic').forEach(el=>{const go=()=>el.dataset.id==='x'?goX():open(el.dataset.id);el.onclick=()=>{$$('.ic').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');beep(600,.02);if(matchMedia('(pointer:coarse)').matches)go()};el.ondblclick=go;el.onkeydown=e=>{if(e.key==='Enter')go()}});
+ open('hashling');restoreWal();solPrice();setInterval(solPrice,60000);
+ rpc('getSlot',[]).then(s=>$('#trSlot').textContent='slot '+num(s,0)).catch(()=>{});setInterval(()=>rpc('getSlot',[]).then(s=>$('#trSlot').textContent='slot '+num(s,0)).catch(()=>{}),20000)}
+setInterval(()=>{$('#trClk').textContent=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})},1000);
+/* menus */
+$$('#bar .mi').forEach(m=>m.onclick=e=>{e.stopPropagation();const on=m.classList.contains('on');$$('#bar .mi').forEach(x=>x.classList.remove('on'));if(!on)m.classList.add('on')});
+document.addEventListener('click',e=>{if(!e.target.closest('#bar .mi'))$$('#bar .mi').forEach(x=>x.classList.remove('on'));if(!e.target.closest('#smenu,#start')){$('#smenu').classList.remove('on');$('#start').classList.remove('on')}});
+function act(a){if(a.startsWith('open:'))open(a.slice(5));if(a==='tile')tile();if(a==='closeall')Object.keys(WINS).forEach(close);if(a==='reboot'){store.set('booted',0);location.reload()}if(a==='x')goX()}
+$$('#bar .menu button').forEach(b=>b.onclick=e=>{e.stopPropagation();$$('#bar .mi').forEach(x=>x.classList.remove('on'));act(b.dataset.a)});
+$('#smList').innerHTML=[['open:hashling','Hashling.exe',I.pet],['open:defender','Defender.exe',I.shield],['open:rugbin','Rug Bin',I.bin],['open:send','SafeSend.exe',I.send],['open:net','Network Monitor',I.net],['open:token','Token.exe',I.coin],['open:term','Command Prompt',I.term],['open:readme','README.TXT',I.doc],['hr'],['tile','Tile windows',I.comp],['reboot','Reboot',I.pet]].map(x=>x[0]==='hr'?'<hr>':`<li><button data-a="${x[0]}">${ico(x[2],1.6)}${x[1]}</button></li>`).join('');
+$$('#smList button').forEach(b=>b.onclick=()=>{$('#smenu').classList.remove('on');$('#start').classList.remove('on');act(b.dataset.a)});
+$('#start').onclick=e=>{e.stopPropagation();$('#smenu').classList.toggle('on');$('#start').classList.toggle('on');beep(500,.03)};
+$('#caPill').onclick=()=>open('token');
+if(store.get('booted',0)&&new URLSearchParams(location.search).get('intro')!=='1'){$('#bootS').innerHTML='Welcome back. Press <b>the yellow button</b> to hatch · ESC to skip'}
+</script>
+
+</html>
